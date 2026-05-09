@@ -1,0 +1,50 @@
+ATL‑Trust™ – Software Prototype & EU‑Compatible Hardware Roadmap (2026)
+
+---
+
+**Problem**
+Malicious AI prompts can hijack device behavior, creating data‑leak and compliance risks across consumer and enterprise ecosystems.
+
+---
+
+**Solution (software prototype)**
+- Real‑time intent validation (≤ 5 ms).
+- NIST‑aligned safety checks.
+- Internal test suite: 10 k simulated attacks, 99.8 % blocked.
+
+---
+
+**EU Compatibility**
+- Designed to meet GDPR data‑privacy requirements.
+- Uses on‑device processing; no personal data sent off‑device.
+
+---
+
+**Hardware Roadmap**
+- TPM‑based proof‑of‑concept ready Q3 2026.
+- On‑device integration for iOS/macOS (future‑ready “AI‑brake”).
+
+---
+
+**Potential Apple Use‑Case**
+- Protect Siri/voice assistants from malicious prompts.
+- Secure on‑device AI assistants in enterprise deployments.
+
+---
+
+**CTA**
+“Request a 15‑minute concept‑validation call.”
+
+[QR code placeholder – link to https://calendly.com/gene-voxs-call]
+
+---
+
+**Prepared by Voxstar**
+
+---
+
+*Notes for final formatting*:
+- Insert Voxstar logo (top left) and ATL‑Trust logo (next to it).
+- Use a dark‑mode background with subtle gradient and accent color #1D1D1F (Apple Space Gray).
+- Keep the document under 150 KB when saved as PDF.
+- Replace the QR‑code placeholder with an actual QR‑code image linking to your Calendly.
