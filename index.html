@@ -159,6 +159,136 @@ nav {
 
 .nav-hire:hover { background: var(--accent); transform: translateY(-1px); }
 
+/* ── DROPDOWN NAVIGATION ── */
+.nav-dropdown-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.dropdown-trigger .chevron {
+  font-size: 8px;
+  transition: transform 0.2s ease;
+}
+
+/* Glassmorphism menu */
+.nav-dropdown {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 0;
+  transform: translateY(10px);
+  background: rgba(247, 245, 240, 0.98);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 8px;
+  width: 295px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+}
+
+/* Invisible bridge to prevent hover loss across the top gap */
+.nav-dropdown::before {
+  content: '';
+  position: absolute;
+  top: -16px;
+  left: 0;
+  width: 100%;
+  height: 16px;
+  background: transparent;
+}
+
+@media (prefers-color-scheme: dark) {
+  .nav-dropdown {
+    background: rgba(22, 20, 32, 0.98);
+  }
+}
+
+.nav-dropdown-wrap:hover .nav-dropdown,
+.nav-dropdown-wrap.active .nav-dropdown {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.nav-dropdown-wrap:hover .dropdown-trigger .chevron,
+.nav-dropdown-wrap.active .dropdown-trigger .chevron {
+  transform: rotate(180deg);
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+  text-align: left;
+}
+
+.dropdown-item:hover {
+  background: var(--paper3);
+}
+
+.di-icon {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.di-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.di-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.di-desc {
+  font-size: 10px;
+  color: var(--text3);
+  line-height: 1.3;
+}
+
+/* ── HIGHLIGHT PULSE ── */
+.highlight-pulse {
+  animation: pulse-border 2.5s cubic-bezier(0.25, 1, 0.5, 1);
+  border-radius: var(--radius-lg) !important;
+}
+
+@keyframes pulse-border {
+  0% {
+    box-shadow: 0 0 0 0px rgba(91, 79, 255, 0.5);
+    background-color: var(--accent-light);
+  }
+  30% {
+    box-shadow: 0 0 0 12px rgba(91, 79, 255, 0);
+    background-color: var(--accent-light);
+  }
+  100% {
+    box-shadow: 0 0 0 0px rgba(91, 79, 255, 0);
+    background-color: transparent;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-dropdown-wrap {
+    display: none;
+  }
+}
+
 /* ── HERO ── */
 .hero {
   padding: 100px 0 80px;
@@ -1352,7 +1482,46 @@ footer {
   <div class="nav-inner">
     <a href="#" class="nav-logo">Gene Da Rocha <sup>GDR</sup></a>
     <div class="nav-right">
-      <a href="#ventures" class="nav-link">Ventures</a>
+      <div class="nav-dropdown-wrap">
+        <a href="#ventures" class="nav-link dropdown-trigger">Apps-Venture <span class="chevron">▼</span></a>
+        <div class="nav-dropdown">
+          <a href="#voxstar-com" class="dropdown-item">
+            <span class="di-icon">🌐</span>
+            <div class="di-info">
+              <span class="di-name">voxstar.com</span>
+              <span class="di-desc">Solo AI Automation Consultancy</span>
+            </div>
+          </a>
+          <a href="#voxstar-ai" class="dropdown-item">
+            <span class="di-icon">💬</span>
+            <div class="di-info">
+              <span class="di-name">voxstar.ai</span>
+              <span class="di-desc">Voice & Chat Agent Platform</span>
+            </div>
+          </a>
+          <a href="#aitoolboard-com" class="dropdown-item">
+            <span class="di-icon">🧰</span>
+            <div class="di-info">
+              <span class="di-name">aitoolboard.com</span>
+              <span class="di-desc">Curated AI Tool & Job Directory</span>
+            </div>
+          </a>
+          <a href="#wiredvibeapp-com" class="dropdown-item">
+            <span class="di-icon">🎧</span>
+            <div class="di-info">
+              <span class="di-name">wiredvibeapp.com</span>
+              <span class="di-desc">Neuroscience Audio Platform</span>
+            </div>
+          </a>
+          <a href="#atl-trust-com" class="dropdown-item">
+            <span class="di-icon">🛡️</span>
+            <div class="di-info">
+              <span class="di-name">atl-trust.com</span>
+              <span class="di-desc">Zero-Trust AI Security Proxy</span>
+            </div>
+          </a>
+        </div>
+      </div>
       <a href="#voxstar" class="nav-link">Enterprise AI</a>
       <a href="#hackathons" class="nav-link">Hackathons</a>
       <a href="#writing" class="nav-link">Writing</a>
@@ -1447,7 +1616,7 @@ footer {
 
     <div class="ventures-list">
 
-      <a href="https://voxstar.com" target="_blank" class="venture-row va-violet reveal">
+      <a href="https://voxstar.com" target="_blank" id="voxstar-com" class="venture-row va-violet reveal">
         <div class="v-index">01</div>
         <div class="v-content">
           <div class="v-tag">AI Consultancy · £297/mo</div>
@@ -1464,7 +1633,7 @@ footer {
         <div class="v-arrow">↗</div>
       </a>
 
-      <a href="https://voxstar.ai" target="_blank" class="venture-row va-ember reveal" style="transition-delay:0.06s">
+      <a href="https://voxstar.ai" target="_blank" id="voxstar-ai" class="venture-row va-ember reveal" style="transition-delay:0.06s">
         <div class="v-index">02</div>
         <div class="v-content">
           <div class="v-tag">Voice & Chat Platform</div>
@@ -1479,7 +1648,7 @@ footer {
         <div class="v-arrow">↗</div>
       </a>
 
-      <a href="https://aitoolboard.com" target="_blank" class="venture-row va-mint reveal" style="transition-delay:0.1s">
+      <a href="https://aitoolboard.com" target="_blank" id="aitoolboard-com" class="venture-row va-mint reveal" style="transition-delay:0.1s">
         <div class="v-index">03</div>
         <div class="v-content">
           <div class="v-tag">Directory & Intelligence Hub</div>
@@ -1494,7 +1663,7 @@ footer {
         <div class="v-arrow">↗</div>
       </a>
 
-      <a href="https://wiredvibeapp.com" target="_blank" class="venture-row va-gold reveal" style="transition-delay:0.14s">
+      <a href="https://wiredvibeapp.com" target="_blank" id="wiredvibeapp-com" class="venture-row va-gold reveal" style="transition-delay:0.14s">
         <div class="v-index">04</div>
         <div class="v-content">
           <div class="v-tag">Neuroscience Audio · Wellness</div>
@@ -1565,7 +1734,7 @@ footer {
 
     <div class="eng-grid reveal">
 
-      <div class="eng-card ec-primary">
+      <div id="atl-trust-com" class="eng-card ec-primary">
         <div class="ec-badge">Custom Engagement</div>
         <div class="ec-icon">🛡️</div>
         <div class="ec-name">ATL-Trust™ Integration</div>
@@ -2122,6 +2291,53 @@ document.getElementById('nlBtn').addEventListener('click', () => {
     input.focus();
     setTimeout(() => input.style.borderColor = '', 1500);
   }
+});
+
+/* DROPDOWN CLICK & SMOOTH SCROLL WITH VISUAL PULSE HIGHLIGHT */
+const dropdownWrap = document.querySelector('.nav-dropdown-wrap');
+const dropdownTrigger = document.querySelector('.dropdown-trigger');
+
+if (dropdownWrap && dropdownTrigger) {
+  dropdownTrigger.addEventListener('click', e => {
+    e.preventDefault();
+    e.stopPropagation();
+    dropdownWrap.classList.toggle('active');
+  });
+
+  document.addEventListener('click', e => {
+    if (!dropdownWrap.contains(e.target)) {
+      dropdownWrap.classList.remove('active');
+    }
+  });
+}
+
+document.querySelectorAll('.dropdown-item').forEach(item => {
+  item.addEventListener('click', e => {
+    e.preventDefault();
+    if (dropdownWrap) {
+      dropdownWrap.classList.remove('active');
+    }
+    
+    const targetId = item.getAttribute('href');
+    const targetEl = document.querySelector(targetId);
+    
+    if (targetEl) {
+      // Calculate position with offset for sticky navbar (~80px)
+      const navEl = document.querySelector('nav');
+      const navHeight = navEl ? navEl.offsetHeight : 80;
+      const targetPos = targetEl.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+      
+      window.scrollTo({
+        top: targetPos,
+        behavior: 'smooth'
+      });
+      
+      // Flash highlight visual feedback
+      targetEl.classList.remove('highlight-pulse');
+      void targetEl.offsetWidth; // Trigger reflow to restart animation
+      targetEl.classList.add('highlight-pulse');
+    }
+  });
 });
 </script>
 </body>
