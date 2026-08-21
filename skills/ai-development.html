@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Development & Agentic Workflows — MCP, Agents & RAG | Gene Da Rocha</title>
+  <meta name="description" content="Custom AI Software Development & Agentic Engineering by Gene Da Rocha: Autonomous AI Agents, Model Context Protocol (MCP) Servers, Tool Calling, and Full-Stack LLM Applications.">
+  <meta name="keywords" content="AI Development, AI Agents, Model Context Protocol, MCP Server, Autonomous AI, Tool Calling, LangChain, LlamaIndex, Gene Da Rocha">
+  <link rel="canonical" href="https://genedarocha.com/skills/ai-development.html">
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://genedarocha.com/skills/ai-development.html">
+  <meta property="og:title" content="AI Development & Agentic Workflows — Gene Da Rocha">
+  <meta property="og:description" content="Autonomous AI Agents, Model Context Protocol (MCP) Servers, Tool Calling, and Full-Stack LLM Applications.">
+  <meta property="og:image" content="https://genedarocha.com/images/ai-development-hero.jpg">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Development & Agentic Workflows — Gene Da Rocha">
+  <meta name="twitter:description" content="Autonomous AI Agents, Model Context Protocol (MCP) Servers, Tool Calling, and Full-Stack LLM Applications.">
+  <meta name="twitter:image" content="https://genedarocha.com/images/ai-development-hero.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --ink: #0f0e11;
+      --paper: #f7f5f0;
+      --paper2: #efece6;
+      --paper3: #e8e4dc;
+      --text: #0f0e11;
+      --text2: #4a4558;
+      --text3: #7a7490;
+      --rule: rgba(15, 14, 17, 0.1);
+      --accent: #5b4fff;
+      --accent2: #ff5c35;
+      --accent3: #00c896;
+      --accent-light: rgba(91, 79, 255, 0.08);
+      --radius: 12px;
+      --radius-lg: 20px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --ink: #f7f5f0;
+        --paper: #0f0e11;
+        --paper2: #161420;
+        --paper3: #1e1b28;
+        --text: #f0eee9;
+        --text2: #a09ab8;
+        --text3: #6b6585;
+        --rule: rgba(247, 245, 240, 0.08);
+      }
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--paper); color: var(--text);
+      font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6;
+      overflow-x: hidden; -webkit-font-smoothing: antialiased;
+    }
+    .site-wrap { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100; padding: 1.25rem 0;
+      border-bottom: 1px solid var(--rule); background: var(--paper);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1100px; margin: 0 auto; padding: 0 2rem;
+    }
+    .nav-logo {
+      font-family: 'Fraunces', serif; font-weight: 700; font-size: 1.1rem;
+      color: var(--text); text-decoration: none; letter-spacing: -0.02em;
+    }
+    .nav-logo sup { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--accent); margin-left: 4px; }
+    .nav-right { display: flex; align-items: center; gap: 1.75rem; }
+    .nav-link { font-size: 13px; font-weight: 500; color: var(--text3); text-decoration: none; transition: color 0.2s; }
+    .nav-link:hover, .nav-link.active { color: var(--text); }
+    
+    .nav-dropdown-wrap { position: relative; display: inline-block; }
+    .dropdown-trigger { display: inline-flex; align-items: center; gap: 4px; cursor: pointer; }
+    .dropdown-trigger .chevron { font-size: 8px; transition: transform 0.2s; }
+    .nav-dropdown {
+      position: absolute; top: calc(100% + 14px); left: -10px;
+      background: rgba(247, 245, 240, 0.98); backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px); border: 1px solid var(--rule);
+      border-radius: var(--radius); padding: 8px; width: 310px;
+      opacity: 0; pointer-events: none; transition: all 0.2s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08); z-index: 1000;
+    }
+    @media (prefers-color-scheme: dark) { .nav-dropdown { background: rgba(22, 20, 32, 0.98); } }
+    .nav-dropdown-wrap:hover .nav-dropdown { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .nav-dropdown-wrap:hover .chevron { transform: rotate(180deg); }
+    .dropdown-item {
+      display: flex; align-items: center; gap: 10px; padding: 10px 12px;
+      border-radius: 8px; text-decoration: none; color: var(--text); transition: background 0.15s;
+    }
+    .dropdown-item:hover { background: var(--paper2); }
+    .di-icon { font-size: 1.1rem; }
+    .di-info { display: flex; flex-direction: column; }
+    .di-name { font-size: 13px; font-weight: 600; }
+    .di-desc { font-size: 11px; color: var(--text3); }
+
+    .nav-hire {
+      font-size: 13px; font-weight: 600; color: var(--paper); background: var(--text);
+      border-radius: 100px; padding: 8px 18px; text-decoration: none; transition: all 0.2s;
+    }
+    .nav-hire:hover { background: var(--accent); transform: translateY(-1px); }
+
+    /* HEADER & CONTENT */
+    .article-header { padding: 4rem 0 2.5rem; text-align: left; }
+    .breadcrumb { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent); margin-bottom: 1rem; text-transform: uppercase; }
+    .article-h1 {
+      font-family: 'Fraunces', serif; font-size: 3rem; font-weight: 900;
+      line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 1.25rem;
+    }
+    .article-intro { font-size: 1.2rem; color: var(--text2); max-width: 800px; margin-bottom: 2.5rem; }
+    
+    .hero-img-wrap {
+      width: 100%; max-height: 500px; border-radius: var(--radius-lg); overflow: hidden;
+      border: 1px solid var(--rule); margin-bottom: 4rem; box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+    }
+    .hero-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* SECTIONS */
+    .dev-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 4rem; }
+    .dev-card {
+      background: var(--paper2); border: 1px solid var(--rule); border-radius: var(--radius-lg);
+      padding: 2rem; transition: transform 0.2s;
+    }
+    .dev-card:hover { transform: translateY(-3px); }
+    .dev-icon { font-size: 2rem; margin-bottom: 1rem; display: inline-block; }
+    .dev-h3 { font-family: 'Fraunces', serif; font-size: 1.35rem; font-weight: 700; margin-bottom: 0.75rem; }
+    .dev-p { font-size: 0.95rem; color: var(--text2); }
+
+    .code-block {
+      background: var(--ink); color: #f8f8f2; font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88rem; padding: 1.5rem; border-radius: var(--radius); overflow-x: auto;
+      margin: 2.5rem 0; border: 1px solid var(--rule);
+    }
+    .code-title { color: var(--accent); font-weight: 600; margin-bottom: 0.75rem; display: block; }
+
+    .cta-banner {
+      background: linear-gradient(135deg, var(--paper2) 0%, var(--paper3) 100%);
+      border: 1px solid var(--rule); border-radius: var(--radius-lg); padding: 3.5rem 2.5rem;
+      text-align: center; margin: 5rem 0;
+    }
+    .cta-h2 { font-family: 'Fraunces', serif; font-size: 2.2rem; font-weight: 800; margin-bottom: 1rem; }
+    .cta-p { max-width: 600px; margin: 0 auto 2rem; color: var(--text2); font-size: 1.05rem; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #fff;
+      font-weight: 600; padding: 12px 28px; border-radius: 100px; text-decoration: none; transition: all 0.2s;
+    }
+    .btn-primary:hover { background: #4a3ee0; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(91,79,255,0.3); }
+
+    footer { border-top: 1px solid var(--rule); padding: 3rem 0; text-align: center; color: var(--text3); font-size: 0.9rem; }
+    footer a { color: var(--text2); text-decoration: none; margin: 0 10px; }
+    footer a:hover { color: var(--accent); }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "AI Development & Agentic System Engineering",
+    "description": "Building custom AI agents, Model Context Protocol (MCP) servers, structured LLM outputs, and full-stack AI applications.",
+    "author": {
+      "@type": "Person",
+      "name": "Gene Da Rocha"
+    }
+  }
+  </script>
+</head>
+
+<body>
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">Gene Da Rocha <sup>GDR</sup></a>
+      <div class="nav-right">
+        <div class="nav-dropdown-wrap">
+          <span class="nav-link dropdown-trigger active">Skills & Services <span class="chevron">▼</span></span>
+          <div class="nav-dropdown">
+            <a href="index.html" class="dropdown-item">
+              <span class="di-icon">💡</span>
+              <div class="di-info">
+                <span class="di-name">Skills Overview Hub</span>
+                <span class="di-desc">Web, AI, SEO & Testing Capabilities</span>
+              </div>
+            </a>
+            <a href="ai-architecture.html" class="dropdown-item">
+              <span class="di-icon">🏛️</span>
+              <div class="di-info">
+                <span class="di-name">AI Architecture & Integration</span>
+                <span class="di-desc">Legacy tech & zero-trust AI security</span>
+              </div>
+            </a>
+            <a href="ai-development.html" class="dropdown-item">
+              <span class="di-icon">🤖</span>
+              <div class="di-info">
+                <span class="di-name">AI Development & Agents</span>
+                <span class="di-desc">Multi-agent systems & MCP protocols</span>
+              </div>
+            </a>
+            <a href="ai-testing.html" class="dropdown-item">
+              <span class="di-icon">🧪</span>
+              <div class="di-info">
+                <span class="di-name">AI Testing & DeepEval QA</span>
+                <span class="di-desc">RAG metrics, agent tracing & CI/CD</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <a href="../index.html#voxstar" class="nav-link">Enterprise AI</a>
+        <a href="../index.html#about" class="nav-link">About</a>
+        <a href="../index.html#recommendations" class="nav-link">Recommendations</a>
+        <a href="https://genedarocha.substack.com" target="_blank" class="nav-link">Blog</a>
+        <a href="https://calendly.com/gene-darocha-voxstar/30min" target="_blank" class="nav-hire">Book a call ↗</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="site-wrap">
+    <header class="article-header">
+      <div class="breadcrumb">Engineering Next-Gen Intelligence</div>
+      <h1 class="article-h1">AI Development & Agentic System Engineering</h1>
+      <p class="article-intro">Building autonomous multi-agent swarms, Model Context Protocol (MCP) custom servers, deterministic tool-calling workflows, and production AI applications designed for real business tasks.</p>
+    </header>
+
+    <div class="hero-img-wrap">
+      <img src="../images/ai-development-hero.jpg" alt="Autonomous AI Agents and Model Context Protocol Visualization">
+    </div>
+
+    <section>
+      <h2 style="font-family:'Fraunces',serif; font-size:2rem; margin-bottom:1.5rem;">Core AI Development Capabilities</h2>
+      
+      <div class="dev-grid">
+        <div class="dev-card">
+          <span class="dev-icon">🔌</span>
+          <h3 class="dev-h3">Model Context Protocol (MCP) Servers</h3>
+          <p class="dev-p">Developing custom MCP servers and clients to securely bridge Claude, OpenAI, and local LLMs directly into proprietary enterprise tools, databases, and local file systems with full protocol specification compliance.</p>
+        </div>
+
+        <div class="dev-card">
+          <span class="dev-icon">🧠</span>
+          <h3 class="dev-h3">Multi-Agent Swarm Orchestration</h3>
+          <p class="dev-p">Designing multi-agent frameworks (LangGraph, AutoGen, custom Python SDKs) with dedicated supervisor agents, tool routing, sub-agent spawning, and state persistence.</p>
+        </div>
+
+        <div class="dev-card">
+          <span class="dev-icon">📋</span>
+          <h3 class="dev-h3">Structured JSON Output & Pydantic Tooling</h3>
+          <p class="dev-p">Enforcing 100% deterministic schema responses using Pydantic models, JSON mode constraints, and strict function calling validation to guarantee error-free code execution.</p>
+        </div>
+
+        <div class="dev-card">
+          <span class="dev-icon">💬</span>
+          <h3 class="dev-h3">Voice & Conversational AI Platforms</h3>
+          <p class="dev-p">Engineering low-latency conversational agents combining real-time speech-to-text (Whisper/Deepgram), streaming LLM generation, and text-to-speech synthesis (ElevenLabs, Cartesia).</p>
+        </div>
+
+        <div class="dev-card">
+          <span class="dev-icon">🖥️</span>
+          <h3 class="dev-h3">Full-Stack Web + AI Applications</h3>
+          <p class="dev-p">Building reactive frontends (Next.js, modern CSS, WebSockets) backed by Python FastAPI or Node.js microservices streaming live token outputs and agent status updates.</p>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <span class="code-title">// Model Context Protocol (MCP) Server Tool Registration Example</span>
+        <code>
+@mcp.tool()
+async def query_enterprise_knowledge(query: str, domain: str) -> dict:
+    """Queries vector DB & returns contextual evidence with confidence score."""
+    results = await hybrid_retriever.search(query=query, filter={"domain": domain})
+    return {"status": "success", "evidence": results.documents, "score": results.top_score}
+        </code>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-banner">
+      <h2 class="cta-h2">Build Custom AI Agents & Tools Today</h2>
+      <p class="cta-p">Partner with Gene Da Rocha to design, build, and deploy production-ready AI tools, MCP servers, and agentic workflows.</p>
+      <a href="https://calendly.com/gene-darocha-voxstar/30min" target="_blank" class="btn-primary">Start an AI Project ↗</a>
+    </section>
+
+    <footer>
+      <p>© 2026 Gene Da Rocha. All rights reserved. | <a href="../index.html">Home</a> <a href="index.html">Skills Hub</a> <a href="ai-architecture.html">AI Architecture</a> <a href="ai-development.html">AI Development</a> <a href="ai-testing.html">AI Testing</a></p>
+    </footer>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,5 @@
+.DS_Store
+.venv/
+downloaded_videos/
+old1/
+__pycache__/
