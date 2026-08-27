@@ -322,8 +322,8 @@ from deepeval.metrics import FaithfulnessMetric, AnswerRelevancyMetric
 from deepeval.test_case import LLMTestCase
 
 def test_rag_pipeline_accuracy():
-    retrieved_context = ["Gene Da Rocha is a Principal AI Architect specializing in DeepEval testing and RAG pipelines."]
-    actual_output = "Gene Da Rocha is an AI Architect who builds RAG evaluation suites."
+    retrieved_context = ["Gene Da Rocha is an AI Systems Engineer specializing in DeepEval testing and RAG pipelines."]
+    actual_output = "Gene Da Rocha is an AI Systems Engineer who builds RAG evaluation suites."
     
     test_case = LLMTestCase(
         input="What does Gene Da Rocha specialize in?",
