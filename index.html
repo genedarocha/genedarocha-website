@@ -3577,8 +3577,7 @@
     </section>
 
     <!-- ── THREE COMMERCIAL OFFERS ── -->
-    <div id="ways-to-work" style="position:relative;top:-90px;height:0;overflow:hidden;"></div>
-    <section id="offers" style="padding-top:40px;padding-bottom:70px;">
+    <section id="offers" data-alias="ways-to-work" style="padding-top:24px;padding-bottom:70px;">
       <div class="section-header reveal">
         <div>
           <div class="section-num">02 / Engagement Models</div>
@@ -4777,7 +4776,13 @@
         const href = anchor.getAttribute('href');
         if (href === '#' || !href) return;
         
-        const targetEl = document.querySelector(href);
+        let targetEl = document.querySelector(href);
+        if (!targetEl && (href === '#ways-to-work' || href === '#offers')) {
+          targetEl = document.querySelector('#offers') || document.querySelector('[data-alias="ways-to-work"]');
+        } else if (!targetEl && href === '#atl-trust') {
+          targetEl = document.querySelector('#voxstar') || document.querySelector('[data-alias="atl-trust"]');
+        }
+
         if (targetEl) {
           e.preventDefault();
           document.querySelectorAll('.nav-dropdown-wrap').forEach(w => w.classList.remove('active'));
@@ -4787,8 +4792,11 @@
           if (targetEl.classList.contains('reveal')) targetEl.classList.add('in');
 
           const navEl = document.querySelector('nav');
-          const navHeight = navEl ? navEl.offsetHeight : 80;
-          const targetPos = targetEl.getBoundingClientRect().top + window.pageYOffset - navHeight - 10;
+          const navHeight = navEl ? navEl.offsetHeight : 72;
+          
+          // Align directly to the section-header for a clean, tight landing
+          const alignEl = targetEl.querySelector('.section-header') || targetEl;
+          const targetPos = alignEl.getBoundingClientRect().top + window.pageYOffset - navHeight - 16;
 
           window.scrollTo({
             top: targetPos,
@@ -4806,10 +4814,13 @@
       });
     });
 
-    // Also check on page load if URL has hash (e.g. #about)
+    // Also check on page load if URL has hash (e.g. #offers, #about)
     window.addEventListener('DOMContentLoaded', () => {
       if (window.location.hash) {
-        const hashEl = document.querySelector(window.location.hash);
+        let hashEl = document.querySelector(window.location.hash);
+        if (!hashEl && (window.location.hash === '#ways-to-work' || window.location.hash === '#offers')) {
+          hashEl = document.querySelector('#offers');
+        }
         if (hashEl) {
           hashEl.querySelectorAll('.reveal').forEach(r => r.classList.add('in'));
           if (hashEl.classList.contains('reveal')) hashEl.classList.add('in');
