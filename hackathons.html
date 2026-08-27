@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hackathons & Applied AI Inventions | Gene Da Rocha</title>
+  <meta name="description"
+    content="Production hackathon projects by Gene Da Rocha: Neuro-Sync Live (UK Patent Pending, Google Gemini Hackathon 2025) and PromptGuardian (LLM Prompt Injection Detection).">
+  <link rel="canonical" href="https://genedarocha.com/hackathons.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --paper: #f7f5f0;
+      --paper2: #efece4;
+      --paper3: #e6e2d6;
+      --ink: #0f0e11;
+      --text: #1a1820;
+      --text2: #555260;
+      --text3: #8a8698;
+      --accent: #5b4fff;
+      --accent-light: rgba(91, 79, 255, 0.08);
+      --accent2: #ff5c35;
+      --accent3: #00c896;
+      --rule: rgba(15, 14, 17, 0.09);
+      --radius: 12px;
+      --radius-lg: 20px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #0e0d14;
+        --paper2: #161420;
+        --paper3: #1f1c2d;
+        --ink: #f0edf8;
+        --text: #e8e4f4;
+        --text2: #a09cb4;
+        --text3: #6b6780;
+        --accent: #7c72ff;
+        --accent-light: rgba(124, 114, 255, 0.12);
+        --accent2: #ff704d;
+        --accent3: #00e5ac;
+        --rule: rgba(240, 237, 248, 0.08);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .site-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--paper);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+      transition: background 0.3s;
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .nav-logo-svg {
+      height: 48px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-link {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--text2);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: color 0.15s, background 0.15s;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--ink);
+      background: var(--paper2);
+    }
+
+    .nav-hire {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #ffffff !important;
+      background: var(--accent);
+      text-decoration: none;
+      padding: 8px 18px;
+      border-radius: 8px;
+      transition: opacity 0.2s, transform 0.2s;
+      white-space: nowrap;
+      margin-left: 0.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-hire:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    /* ── NAV DROPDOWN ── */
+    .nav-dropdown-wrap {
+      position: relative;
+      display: inline-block;
+    }
+
+    .nav-dropdown-wrap .chevron {
+      font-size: 8px;
+      margin-left: 2px;
+      transition: transform 0.2s;
+    }
+
+    .nav-dropdown {
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      min-width: 270px;
+      background: #ffffff;
+      border: 1px solid rgba(15, 14, 17, 0.12);
+      border-radius: 12px;
+      padding: 8px;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.14);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(6px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+      z-index: 2000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .nav-dropdown {
+        background: #181524;
+        border-color: rgba(240, 237, 248, 0.14);
+        box-shadow: 0 16px 44px rgba(0, 0, 0, 0.65);
+      }
+    }
+
+    .nav-dropdown::before {
+      content: '';
+      position: absolute;
+      top: -12px;
+      left: 0;
+      right: 0;
+      height: 12px;
+    }
+
+    .nav-dropdown-wrap:hover .nav-dropdown,
+    .nav-dropdown-wrap.active .nav-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--text);
+      transition: background 0.15s;
+    }
+
+    .dropdown-item:hover {
+      background: var(--paper2);
+    }
+
+    .di-icon {
+      font-size: 16px;
+      margin-top: 1px;
+    }
+
+    .di-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .di-name {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .di-desc {
+      font-size: 11.5px;
+      color: var(--text3);
+      line-height: 1.35;
+      margin-top: 2px;
+    }
+
+    /* ── HAMBURGER & MOBILE DRAWER ── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 28px;
+      height: 20px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 1001;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      height: 2px;
+      width: 100%;
+      background: var(--ink);
+      border-radius: 2px;
+    }
+
+    .mobile-drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 2998;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+    }
+
+    .mobile-drawer-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 320px;
+      max-width: 85vw;
+      height: 100vh;
+      background: var(--paper);
+      z-index: 2999;
+      box-shadow: -10px 0 40px rgba(0, 0, 0, 0.2);
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
+    .mobile-drawer.active {
+      transform: translateX(0);
+    }
+
+    .mobile-drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .mobile-drawer-close {
+      background: transparent;
+      border: none;
+      font-size: 24px;
+      color: var(--ink);
+      cursor: pointer;
+    }
+
+    .mobile-drawer-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .mobile-nav-link {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+    }
+
+    .mobile-acc-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: transparent;
+      border: none;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      padding: 10px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .mobile-acc-content {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      padding-left: 1.2rem;
+      margin-top: 4px;
+    }
+
+    .mobile-acc-content.active {
+      display: flex;
+    }
+
+    .mobile-acc-content a {
+      font-size: 13.5px;
+      color: var(--text2);
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+    }
+
+    .mobile-drawer-footer {
+      margin-top: auto;
+      padding: 1.5rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    @media (max-width: 900px) {
+      .nav-right {
+        display: none;
+      }
+      .nav-hamburger {
+        display: flex;
+      }
+    }
+
+    /* ── PAGE CONTENT ── */
+    .hero-header {
+      padding: 4rem 0 2.5rem;
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 3.5rem;
+    }
+
+    .tag-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 4px 12px;
+      border-radius: 100px;
+      background: var(--accent-light);
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    .page-h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+    }
+
+    .page-h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .page-sub {
+      font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+      color: var(--text2);
+      max-width: 800px;
+      line-height: 1.65;
+    }
+
+    /* ── HACKATHON CARDS ── */
+    .hack-card-full {
+      background: var(--paper2);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      margin-bottom: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hack-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+    }
+
+    .hb-teal {
+      background: rgba(0, 200, 150, 0.12);
+      color: #009870;
+    }
+
+    .hb-ember {
+      background: rgba(255, 92, 53, 0.12);
+      color: #d94520;
+    }
+
+    .hack-patent-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      background: rgba(91, 79, 255, 0.1);
+      color: var(--accent);
+      border-radius: 100px;
+      border: 1px solid rgba(91, 79, 255, 0.2);
+    }
+
+    .hack-title {
+      font-family: 'Fraunces', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.35rem;
+    }
+
+    .hack-sub {
+      font-size: 14.5px;
+      color: var(--text3);
+      margin-bottom: 1.5rem;
+    }
+
+    .hack-tagline {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+      line-height: 1.45;
+    }
+
+    .hack-desc {
+      font-size: 15px;
+      color: var(--text2);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .hack-detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 700px) {
+      .hack-detail-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hdg-item {
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      padding: 1.2rem;
+    }
+
+    .hdg-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--ink);
+      margin-bottom: 0.35rem;
+    }
+
+    .hdg-value {
+      font-size: 13.5px;
+      color: var(--text2);
+      line-height: 1.5;
+    }
+
+    .hack-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 2rem;
+    }
+
+    .chip {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      color: var(--text2);
+    }
+
+    .btn-filled {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 10px 22px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: transform 0.15s, opacity 0.15s;
+    }
+
+    .btn-filled:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 3rem 0;
+      margin-top: 4rem;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text3);
+    }
+
+    footer a {
+      color: var(--text2);
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ── NAV ── -->
+  <nav>
+    <div class="nav-inner">
+      <div style="display:flex;align-items:center;">
+        <a href="index.html" class="nav-logo" aria-label="GDR AI Systems Engineer">
+          <img src="images/logo-option1.svg" alt="GDR AI Systems Engineer" class="nav-logo-svg" height="48">
+        </a>
+      </div>
+      <div class="nav-right">
+        <div class="nav-dropdown-wrap">
+          <a href="skills/index.html" class="nav-link dropdown-trigger">Website &amp; AI Skills <span class="chevron">▼</span></a>
+          <div class="nav-dropdown">
+            <a href="skills/index.html" class="dropdown-item">
+              <span class="di-icon">💡</span>
+              <div class="di-info">
+                <span class="di-name">Skills Overview Hub</span>
+                <span class="di-desc">AI systems, testing, architecture &amp; engineering</span>
+              </div>
+            </a>
+            <a href="skills/ai-architecture.html" class="dropdown-item">
+              <span class="di-icon">🏛️</span>
+              <div class="di-info">
+                <span class="di-name">AI Architecture &amp; Integration</span>
+                <span class="di-desc">Legacy systems &amp; zero-trust AI architecture</span>
+              </div>
+            </a>
+            <a href="skills/ai-development.html" class="dropdown-item">
+              <span class="di-icon">🤖</span>
+              <div class="di-info">
+                <span class="di-name">AI Development &amp; Agents</span>
+                <span class="di-desc">Autonomous systems, MCP protocols &amp; tool calling</span>
+              </div>
+            </a>
+            <a href="skills/ai-testing.html" class="dropdown-item">
+              <span class="di-icon">🧪</span>
+              <div class="di-info">
+                <span class="di-name">AI Testing &amp; DeepEval QA</span>
+                <span class="di-desc">Evaluation, agent tracing &amp; automated CI/CD</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="nav-dropdown-wrap">
+          <a href="index.html#ventures" class="nav-link dropdown-trigger">Apps-Venture <span class="chevron">▼</span></a>
+          <div class="nav-dropdown">
+            <a href="https://voxstar.com" target="_blank" class="dropdown-item">
+              <span class="di-icon">🌐</span>
+              <div class="di-info">
+                <span class="di-name">voxstar.com ↗</span>
+                <span class="di-desc">AI Systems &amp; Automation Consultancy</span>
+              </div>
+            </a>
+            <a href="https://voxstar.ai" target="_blank" class="dropdown-item">
+              <span class="di-icon">💬</span>
+              <div class="di-info">
+                <span class="di-name">voxstar.ai ↗</span>
+                <span class="di-desc">Voice &amp; Chat Agent Platform</span>
+              </div>
+            </a>
+            <a href="https://aitoolboard.com" target="_blank" class="dropdown-item">
+              <span class="di-icon">🧰</span>
+              <div class="di-info">
+                <span class="di-name">aitoolboard.com ↗</span>
+                <span class="di-desc">Curated AI Tool &amp; Intelligence Hub</span>
+              </div>
+            </a>
+            <a href="https://wiredvibeapp.com" target="_blank" class="dropdown-item">
+              <span class="di-icon">🎧</span>
+              <div class="di-info">
+                <span class="di-name">wiredvibeapp.com ↗</span>
+                <span class="di-desc">Neuroscience Audio Platform</span>
+              </div>
+            </a>
+            <a href="index.html#voxstar" class="dropdown-item">
+              <span class="di-icon">🛡️</span>
+              <div class="di-info">
+                <span class="di-name">atl-trust.com</span>
+                <span class="di-desc">Autonomous AI Control Layer</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <a href="index.html#offers" class="nav-link">Ways to Work</a>
+        <a href="index.html#voxstar" class="nav-link">ATL-Trust</a>
+        <a href="hackathons.html" class="nav-link active">Hackathons</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="index.html#recommendations" class="nav-link">Recommendations</a>
+        <a href="https://genedarocha.substack.com" target="_blank" class="nav-link">Blog</a>
+        <a href="https://calendly.com/gene-darocha-voxstar/30min" target="_blank" class="nav-hire">Book Strategy Call ↗</a>
+      </div>
+
+      <!-- HAMBURGER BUTTON FOR MOBILE -->
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV DRAWER -->
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay"></div>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer-header">
+      <a href="index.html" class="nav-logo" aria-label="GDR AI Systems Engineer">
+        <img src="images/logo-option1.svg" alt="GDR AI Systems Engineer" class="nav-logo-svg" height="36">
+      </a>
+      <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="mobile-drawer-body">
+      <!-- Website & AI Skills Accordion -->
+      <div class="mobile-acc-item">
+        <button class="mobile-acc-trigger">
+          <span>Website &amp; AI Skills</span>
+          <span class="acc-chevron">▼</span>
+        </button>
+        <div class="mobile-acc-content">
+          <a href="skills/index.html">💡 Skills Overview Hub</a>
+          <a href="skills/ai-architecture.html">🏛️ AI Architecture &amp; Integration</a>
+          <a href="skills/ai-development.html">🤖 AI Development &amp; Agents</a>
+          <a href="skills/ai-testing.html">🧪 AI Testing &amp; DeepEval QA</a>
+        </div>
+      </div>
+
+      <!-- Apps-Venture Accordion -->
+      <div class="mobile-acc-item">
+        <button class="mobile-acc-trigger">
+          <span>Apps-Venture</span>
+          <span class="acc-chevron">▼</span>
+        </button>
+        <div class="mobile-acc-content">
+          <a href="https://voxstar.com" target="_blank">🌐 voxstar.com ↗</a>
+          <a href="https://voxstar.ai" target="_blank">💬 voxstar.ai ↗</a>
+          <a href="https://aitoolboard.com" target="_blank">🧰 aitoolboard.com ↗</a>
+          <a href="https://wiredvibeapp.com" target="_blank">🎧 wiredvibeapp.com ↗</a>
+          <a href="index.html#voxstar">🛡️ atl-trust.com</a>
+        </div>
+      </div>
+
+      <a href="index.html#offers" class="mobile-nav-link">Ways to Work</a>
+      <a href="index.html#voxstar" class="mobile-nav-link">ATL-Trust</a>
+      <a href="hackathons.html" class="mobile-nav-link">Hackathons</a>
+      <a href="about.html" class="mobile-nav-link">About</a>
+      <a href="index.html#recommendations" class="mobile-nav-link">Recommendations (38)</a>
+      <a href="https://genedarocha.substack.com" target="_blank" class="mobile-nav-link">Blog ↗</a>
+    </div>
+    <div class="mobile-drawer-footer">
+      <a href="https://calendly.com/gene-darocha-voxstar/30min" target="_blank" class="nav-hire" style="width:100%; justify-content:center; text-align:center;">Book Strategy Call ↗</a>
+    </div>
+  </div>
+
+  <div class="site-wrap">
+    <header class="hero-header">
+      <div class="tag-badge">🏆 Hackathons &amp; Inventions</div>
+      <h1 class="page-h1">Built Under Pressure.<br><em>Shipped to the World.</em></h1>
+      <p class="page-sub">Working proof of applied invention: from bio-adaptive real-time audio entrainment (UK Patent Pending) to zero-shot LLM adversarial prompt injection defense.</p>
+    </header>
+
+    <!-- PROJECT 1: NEURO-SYNC LIVE -->
+    <div class="hack-card-full">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:0.5rem">
+        <div>
+          <div class="hack-badge hb-teal">🏆 Google Gemini 3 Hackathon · 2025</div>
+          <h2 class="hack-title">Neuro-Sync Live</h2>
+          <div class="hack-sub">Bio-Adaptive AI Audio Entrainment · Progressive Web App</div>
+        </div>
+        <div class="hack-patent-pill">🔒 Patent Pending · UK</div>
+      </div>
+
+      <div class="hack-tagline">"What if your music player could see how you feel and adapt your brainwaves in real-time?"</div>
+
+      <p class="hack-desc">Existing focus audio tools play static loops whether you are exhausted, overstimulated, or in a deep flow state. Neuro-Sync Live introduces an active closed feedback loop: a privacy-first AI system that reads real-time bio-feedback via camera feed and dynamically calculates and shifts binaural audio frequencies (Alpha 10Hz, Theta 6Hz, Gamma 40Hz) to regulate cognitive arousal.</p>
+
+      <div class="hack-detail-grid">
+        <div class="hdg-item">
+          <div class="hdg-label">☁️ Cloud Multimodal Mode</div>
+          <div class="hdg-value">Gemini 1.5 Flash streaming via Vercel Edge Functions for deep visual affect and posture analysis.</div>
+        </div>
+        <div class="hdg-item">
+          <div class="hdg-label">🔒 Zero-Latency Local Mode</div>
+          <div class="hdg-value">Gemma 2B running offline inside the browser on WebGPU — completely airgapped with zero external server calls.</div>
+        </div>
+        <div class="hdg-item">
+          <div class="hdg-label">🎵 Custom Audio Synthesizer</div>
+          <div class="hdg-value">Native Web Audio API oscillators producing precision micro-frequency differential tones in real time.</div>
+        </div>
+        <div class="hdg-item">
+          <div class="hdg-label">🧠 Dynamic Entrainment</div>
+          <div class="hdg-value">Rapidly transitions between focus, meditation, and alertness within seconds of detected physiological changes.</div>
+        </div>
+      </div>
+
+      <div class="hack-chips">
+        <span class="chip">Next.js 14</span>
+        <span class="chip">Gemini 1.5 Flash</span>
+        <span class="chip">Gemma 2B (WebGPU)</span>
+        <span class="chip">MediaPipe</span>
+        <span class="chip">Web Audio API</span>
+        <span class="chip">Tailwind CSS</span>
+        <span class="chip">TypeScript</span>
+      </div>
+
+      <div>
+        <a href="https://devpost.com/software/neuro-sync-live" target="_blank" class="btn-filled">View on Devpost ↗</a>
+      </div>
+    </div>
+
+    <!-- PROJECT 2: PROMPTGUARDIAN -->
+    <div class="hack-card-full">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:0.5rem">
+        <div>
+          <div class="hack-badge hb-ember">🛡️ Applied AI Safety · IP</div>
+          <h2 class="hack-title">PromptGuardian</h2>
+          <div class="hack-sub">LLM Adversarial Prompt Injection Defense Framework</div>
+        </div>
+        <div style="font-size:2rem">🔒</div>
+      </div>
+
+      <div class="hack-tagline">"Securing autonomous agents before malicious inputs hijack execution."</div>
+
+      <p class="hack-desc">A production-engineered AI security tool designed to detect, classify, and neutralize indirect and direct prompt injection attacks. Built to protect enterprise autonomous agent pipelines from prompt manipulation, system prompt leaks, and unauthorized tool execution.</p>
+
+      <div class="hack-chips">
+        <span class="chip">Python</span>
+        <span class="chip">LLM Safety &amp; Red-Teaming</span>
+        <span class="chip">Adversarial Evaluation</span>
+        <span class="chip">DeepEval</span>
+        <span class="chip">Circuit-Breakers</span>
+      </div>
+
+      <div>
+        <a href="https://calendly.com/gene-darocha-voxstar/30min" target="_blank" class="btn-filled">Discuss AI Safety Architecture ↗</a>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2026 Gene Da Rocha. All rights reserved. | <a href="index.html">Home</a> <a href="skills/index.html">Skills Hub</a> <a href="about.html">About</a> <a href="hackathons.html">Hackathons</a> <a href="index.html#offers">Ways to Work</a> <a href="index.html#recommendations">Recommendations</a></p>
+    </footer>
+  </div>
+
+  <script>
+    // Mobile Drawer Logic
+    const hamburger = document.getElementById('navHamburger');
+    const drawer = document.getElementById('mobileDrawer');
+    const overlay = document.getElementById('mobileDrawerOverlay');
+    const closeBtn = document.getElementById('mobileDrawerClose');
+
+    function openDrawer() {
+      drawer.classList.add('active');
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDrawer() {
+      drawer.classList.remove('active');
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    if (hamburger) hamburger.addEventListener('click', openDrawer);
+    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+    if (overlay) overlay.addEventListener('click', closeDrawer);
+
+    // Mobile Accordion
+    document.querySelectorAll('.mobile-acc-trigger').forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const content = trigger.nextElementSibling;
+        const chevron = trigger.querySelector('.acc-chevron');
+        content.classList.toggle('active');
+        if (chevron) {
+          chevron.style.transform = content.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+      });
+    });
+
+    // Dropdowns
+    document.querySelectorAll('.nav-dropdown-wrap').forEach(wrap => {
+      const trigger = wrap.querySelector('.dropdown-trigger');
+      if (trigger) {
+        trigger.addEventListener('click', e => {
+          e.stopPropagation();
+          const isActive = wrap.classList.contains('active');
+          document.querySelectorAll('.nav-dropdown-wrap').forEach(w => w.classList.remove('active'));
+          if (!isActive) wrap.classList.add('active');
+        });
+      }
+    });
+
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.nav-dropdown-wrap')) {
+        document.querySelectorAll('.nav-dropdown-wrap').forEach(w => w.classList.remove('active'));
+      }
+    });
+  </script>
+</body>
+
+</html>
