@@ -9,6 +9,8 @@
   <meta name="keywords" content="Gene Da Rocha, AI Systems Engineer, AI Engineering, AI Systems, AI Agents, AI Automation, AI Testing, AI Evaluation, DeepEval, AI Governance, AI Security, ATL-Trust, AI Search Visibility, GEO consultant, AI consultant UK, AI engineer UK, Autonomous AI">
   <link rel="canonical" href="https://genedarocha.com/">
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" href="favicon-option1.svg">
 
   <!-- Open Graph / Social Media -->
   <meta property="og:type" content="website">
@@ -264,22 +266,53 @@
     }
 
     .nav-logo {
-      font-family: 'Fraunces', serif;
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--text);
+      display: inline-flex;
+      align-items: center;
       text-decoration: none;
-      letter-spacing: -0.02em;
+      line-height: 1;
+      transition: transform 0.2s ease, opacity 0.2s ease;
     }
 
-    .nav-logo sup {
+    .nav-logo:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+
+    .nav-logo-svg {
+      height: 40px;
+      width: auto;
+      display: block;
+    }
+
+    /* Option switcher pill */
+    .logo-switcher-wrap {
+      display: inline-flex;
+      align-items: center;
+      background: var(--paper2);
+      border: 1px solid var(--rule);
+      border-radius: 20px;
+      padding: 3px 6px;
+      gap: 4px;
+      margin-left: 0.75rem;
+      font-size: 11px;
+    }
+
+    .logo-opt-btn {
+      background: none;
+      border: none;
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 10px;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 9px;
-      color: var(--accent);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      vertical-align: super;
-      margin-left: 4px;
+      font-weight: 600;
+      color: var(--text3);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .logo-opt-btn.active {
+      background: var(--text);
+      color: var(--paper);
     }
 
     .nav-right {
@@ -3202,7 +3235,11 @@
   <!-- ── NAV ── -->
   <nav>
     <div class="nav-inner">
-      <a href="#" class="nav-logo">Gene Da Rocha <sup>GDR</sup></a>
+      <div style="display:flex;align-items:center;">
+        <a href="#" class="nav-logo" aria-label="GDR AI Systems Engineer">
+          <img id="navLogoImg" src="images/logo-option1.svg" alt="GDR AI Systems Engineer" class="nav-logo-svg" height="40">
+        </a>
+      </div>
       <div class="nav-right">
         <div class="nav-dropdown-wrap">
           <a href="skills/index.html" class="nav-link dropdown-trigger">Website &amp; AI Skills <span class="chevron">▼</span></a>
@@ -3299,7 +3336,9 @@
   <div class="mobile-drawer-overlay" id="mobileDrawerOverlay"></div>
   <div class="mobile-drawer" id="mobileDrawer">
     <div class="mobile-drawer-header">
-      <a href="#" class="nav-logo">Gene Da Rocha <sup>GDR</sup></a>
+      <a href="#" class="nav-logo" aria-label="GDR AI Systems Engineer">
+        <img id="drawerLogoImg" src="images/logo-option1.svg" alt="GDR AI Systems Engineer" class="nav-logo-svg" height="36">
+      </a>
       <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close menu">&times;</button>
     </div>
     <div class="mobile-drawer-body">
@@ -3357,7 +3396,7 @@
           <em>Working Business Systems</em>
         </h1>
         <p class="hero-desc">
-          I help businesses turn AI opportunities into real systems — from strategy and architecture through engineering, automation, testing and governance.
+          I help businesses identify where AI can create measurable value, then design, build, test and govern the systems that turn those opportunities into working solutions.
         </p>
         <div class="hero-credibility">
           <span>🛡️</span> 40+ years of engineering, development, testing, automation and enterprise technology experience — now applied to AI.
@@ -3451,22 +3490,22 @@
         <div class="outcome-card">
           <div class="outcome-icon">📈</div>
           <div class="outcome-title">Increase Revenue</div>
-          <p class="outcome-desc">Use AI to generate, qualify and convert more business opportunities with precision and automated intelligence.</p>
+          <p class="outcome-desc">Generate, qualify and convert more opportunities using AI.</p>
         </div>
         <div class="outcome-card">
           <div class="outcome-icon">⚡</div>
           <div class="outcome-title">Reduce Costs</div>
-          <p class="outcome-desc">Automate expensive or repetitive business processes without compromising on quality or compliance.</p>
+          <p class="outcome-desc">Automate repetitive or expensive processes.</p>
         </div>
         <div class="outcome-card">
           <div class="outcome-icon">⏱️</div>
           <div class="outcome-title">Save Time</div>
-          <p class="outcome-desc">Turn slow manual workflows and multi-step bottlenecks into seamless, intelligent automated systems.</p>
+          <p class="outcome-desc">Turn slow manual workflows into intelligent systems.</p>
         </div>
         <div class="outcome-card">
           <div class="outcome-icon">🛡️</div>
           <div class="outcome-title">Reduce Risk</div>
-          <p class="outcome-desc">Test, evaluate, govern and secure AI before it creates expensive operational or reputational problems.</p>
+          <p class="outcome-desc">Test, evaluate, govern and secure AI before it creates expensive problems.</p>
         </div>
       </div>
     </section>
@@ -3485,66 +3524,71 @@
         <div class="problem-card">
           <div class="problem-tag">"We don't know where AI could create value."</div>
           <div class="problem-solution-title">AI Opportunity Assessment</div>
-          <p class="problem-solution-desc">Identify and prioritise the highest-value AI opportunities across your processes, data, and workflows before investing in costly implementation.</p>
+          <p class="problem-solution-desc">Identify and prioritise the highest-value AI opportunities before investing heavily in implementation.</p>
           <div class="problem-chips">
             <span class="chip">Opportunity Map</span>
+            <span class="chip">Process Analysis</span>
             <span class="chip">ROI Priority</span>
-            <span class="chip">Roadmap</span>
+          </div>
+          <div style="margin-top:1.25rem;">
+            <a href="#offers" class="btn-outline" style="font-size:12.5px;padding:7px 14px;display:inline-block">Find My AI Opportunities →</a>
           </div>
         </div>
 
         <div class="problem-card">
-          <div class="problem-tag">"Our team spends too much time doing repetitive work."</div>
-          <div class="problem-solution-title">AI Automation</div>
-          <p class="problem-solution-desc">Identify and automate expensive, time-draining manual processes across your operations — seamlessly connecting your existing databases, tools, and APIs.</p>
+          <div class="problem-tag">"Our team spends too much time on repetitive work."</div>
+          <div class="problem-solution-title">AI Systems &amp; Automation</div>
+          <p class="problem-solution-desc">Identify repetitive processes and turn appropriate parts into intelligent automated workflows.</p>
           <div class="problem-chips">
-            <span class="chip">Workflow Automation</span>
-            <span class="chip">n8n / APIs</span>
-            <span class="chip">System Sync</span>
+            <span class="chip">Fewer Manual Hours</span>
+            <span class="chip">Faster Processing</span>
+            <span class="chip">Fewer Errors</span>
+            <span class="chip">Lower Operating Costs</span>
+          </div>
+          <div style="margin-top:1.25rem;">
+            <a href="#offers" class="btn-outline" style="font-size:12.5px;padding:7px 14px;display:inline-block">Find a Process to Automate →</a>
           </div>
         </div>
 
         <div class="problem-card">
           <div class="problem-tag">"We want to build AI agents."</div>
           <div class="problem-solution-title">AI Agent Engineering</div>
-          <p class="problem-solution-desc">Design and implement autonomous AI agents that can interact with your customers, data, systems, and workflows — backed by production-grade architecture, testing, and governance.</p>
+          <p class="problem-solution-desc">Design and implement AI agents that can interact with customers, information, tools and business systems — engineered with robust testing, evaluation, permissions, governance, security, and monitoring.</p>
           <div class="problem-chips">
             <span class="chip">Autonomous Agents</span>
-            <span class="chip">MCP Servers</span>
-            <span class="chip">Tool Calling</span>
+            <span class="chip">Tool Calling &amp; MCP</span>
+            <span class="chip">Security &amp; Permissions</span>
+          </div>
+          <div style="margin-top:1.25rem;">
+            <a href="https://calendly.com/gene-darocha-voxstar/30min" target="_blank" class="btn-outline" style="font-size:12.5px;padding:7px 14px;display:inline-block">Discuss My AI System ↗</a>
           </div>
         </div>
 
         <div class="problem-card">
-          <div class="problem-tag">"We're worried about AI making mistakes."</div>
-          <div class="problem-solution-title">AI Testing &amp; Evaluation</div>
-          <p class="problem-solution-desc">Test AI systems and agents before they become production problems. Automated evaluation suites, adversarial testing, hallucination prevention, and CI/CD quality assurance.</p>
+          <div class="problem-tag">"We already have AI — can we trust it?"</div>
+          <div class="problem-solution-title">AI Testing &amp; Governance Review</div>
+          <p class="problem-solution-desc">Assess AI systems and agents for reliability, behaviour, evaluation, edge cases, security, governance, permissions, and production readiness. Backed by 10+ years of software testing leadership.</p>
           <div class="problem-chips">
+            <span class="chip">10+ Yrs QA Leadership</span>
             <span class="chip">DeepEval QA</span>
-            <span class="chip">Adversarial Testing</span>
-            <span class="chip">Reliability</span>
+            <span class="chip">Edge Cases &amp; Safety</span>
+          </div>
+          <div style="margin-top:1.25rem;">
+            <a href="https://calendly.com/gene-darocha-voxstar/30min" target="_blank" class="btn-outline" style="font-size:12.5px;padding:7px 14px;display:inline-block">Review My AI System ↗</a>
           </div>
         </div>
 
         <div class="problem-card">
-          <div class="problem-tag">"We need to control what autonomous AI can do."</div>
-          <div class="problem-solution-title">AI Governance &amp; Security</div>
-          <p class="problem-solution-desc">Help organisations introduce controls and circuit-breakers around AI systems and autonomous agents — preventing excessive agency and securing data boundaries.</p>
-          <div class="problem-chips">
-            <span class="chip">ATL-Trust™</span>
-            <span class="chip">Execution Guardrails</span>
-            <span class="chip">Zero-Trust</span>
-          </div>
-        </div>
-
-        <div class="problem-card">
-          <div class="problem-tag">"Our business isn't being discovered through AI."</div>
+          <div class="problem-tag">"We want customers to find us through AI."</div>
           <div class="problem-solution-title">AI Search Visibility / GEO</div>
-          <p class="problem-solution-desc">Help your organisation become structured, indexed, and easy for AI search engines (ChatGPT, Perplexity, Claude, Gemini) to discover and represent accurately.</p>
+          <p class="problem-solution-desc">Help organisations improve how AI systems understand, discover and represent their business across AI answer engines.</p>
           <div class="problem-chips">
-            <span class="chip">GEO Optimization</span>
-            <span class="chip">LLM Indexing</span>
-            <span class="chip">AEO Schema</span>
+            <span class="chip">Greater AI Visibility</span>
+            <span class="chip">Brand Representation</span>
+            <span class="chip">Discoverability</span>
+          </div>
+          <div style="margin-top:1.25rem;">
+            <a href="https://calendly.com/gene-darocha-voxstar/30min" target="_blank" class="btn-outline" style="font-size:12.5px;padding:7px 14px;display:inline-block">Improve My AI Visibility ↗</a>
           </div>
         </div>
       </div>
@@ -3665,17 +3709,69 @@
         <div class="ba-row">
           <div class="ba-from"><span class="ba-from-dot"></span>Disconnected AI experiment</div>
           <div class="ba-arrow">→</div>
-          <div class="ba-to"><span class="ba-to-dot"></span>Enterprise-ready implementation</div>
+          <div class="ba-to"><span class="ba-to-dot"></span>Enterprise AI capability</div>
         </div>
         <div class="ba-row">
           <div class="ba-from"><span class="ba-from-dot"></span>Unknown AI opportunity</div>
           <div class="ba-arrow">→</div>
           <div class="ba-to"><span class="ba-to-dot"></span>Prioritised AI roadmap &amp; ROI</div>
         </div>
-        <div class="ba-row">
-          <div class="ba-from"><span class="ba-from-dot"></span>Poor AI search visibility</div>
-          <div class="ba-arrow">→</div>
-          <div class="ba-to"><span class="ba-to-dot"></span>Accurate LLM &amp; GEO readiness</div>
+      </div>
+    </section>
+
+    <!-- ── 10+ YEARS OF TESTING SECTION ── -->
+    <section id="testing-experience" style="padding-top:40px;padding-bottom:70px;">
+      <div class="section-header reveal">
+        <div>
+          <div class="section-num">Specialist Differentiator</div>
+          <h2 class="section-title">More Than a Decade of<br><em>Testing Experience.</em></h2>
+        </div>
+        <p class="section-body">I've spent more than 10 years working in software testing and quality engineering. AI changes the software development model, but one principle remains: <strong>Software still needs to be tested.</strong></p>
+      </div>
+
+      <div class="testing-banner reveal" style="background:var(--paper2);border:1px solid var(--rule);border-radius:var(--radius-lg);padding:2rem;margin-bottom:2rem;">
+        <div style="font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:0.75rem">AI systems introduce unique failure modes that traditional code never had:</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:1rem;margin-top:1.5rem">
+          <div style="background:var(--paper);border:1px solid var(--rule);padding:1rem;border-radius:10px;">
+            <div style="font-weight:700;color:var(--accent2);margin-bottom:4px">⚠️ Non-Deterministic Behaviour</div>
+            <div style="font-size:12.5px;color:var(--text2)">Outputs vary across runs; requiring probabilistic evaluations and strict assertions.</div>
+          </div>
+          <div style="background:var(--paper);border:1px solid var(--rule);padding:1rem;border-radius:10px;">
+            <div style="font-weight:700;color:var(--accent2);margin-bottom:4px">🎭 Hallucination</div>
+            <div style="font-size:12.5px;color:var(--text2)">Models inventing facts; verified using DeepEval faithfulness and source attribution metrics.</div>
+          </div>
+          <div style="background:var(--paper);border:1px solid var(--rule);padding:1rem;border-radius:10px;">
+            <div style="font-weight:700;color:var(--accent2);margin-bottom:4px">🛡️ Prompt Injection</div>
+            <div style="font-size:12.5px;color:var(--text2)">Adversarial payloads hijacking model instructions; defended via runtime safety filters.</div>
+          </div>
+          <div style="background:var(--paper);border:1px solid var(--rule);padding:1rem;border-radius:10px;">
+            <div style="font-weight:700;color:var(--accent2);margin-bottom:4px">🤖 Unexpected Agent Behaviour</div>
+            <div style="font-size:12.5px;color:var(--text2)">Agents taking unapproved paths or looping endlessly; controlled by execution bounds.</div>
+          </div>
+          <div style="background:var(--paper);border:1px solid var(--rule);padding:1rem;border-radius:10px;">
+            <div style="font-weight:700;color:var(--accent2);margin-bottom:4px">🔧 Incorrect Tool Use</div>
+            <div style="font-size:12.5px;color:var(--text2)">Calling unintended APIs or passing malformed parameters; validated with schema QA.</div>
+          </div>
+          <div style="background:var(--paper);border:1px solid var(--rule);padding:1rem;border-radius:10px;">
+            <div style="font-weight:700;color:var(--accent2);margin-bottom:4px">🔒 Data Leakage</div>
+            <div style="font-size:12.5px;color:var(--text2)">Sensitive context leaking into external foundation models or client responses.</div>
+          </div>
+          <div style="background:var(--paper);border:1px solid var(--rule);padding:1rem;border-radius:10px;">
+            <div style="font-weight:700;color:var(--accent2);margin-bottom:4px">🎯 Edge Cases</div>
+            <div style="font-size:12.5px;color:var(--text2)">Adversarial user inputs, multimodal surprises, and boundary conditions.</div>
+          </div>
+          <div style="background:var(--paper);border:1px solid var(--rule);padding:1rem;border-radius:10px;">
+            <div style="font-weight:700;color:var(--accent2);margin-bottom:4px">🔄 Regression</div>
+            <div style="font-size:12.5px;color:var(--text2)">Model updates or prompt tweaks silently degrading performance in production.</div>
+          </div>
+          <div style="background:var(--paper);border:1px solid var(--rule);padding:1rem;border-radius:10px;">
+            <div style="font-weight:700;color:var(--accent2);margin-bottom:4px">⚖️ Safety &amp; Governance</div>
+            <div style="font-size:12.5px;color:var(--text2)">Compliance with enterprise policies and institutional risk management boundaries.</div>
+          </div>
+        </div>
+        <div style="margin-top:1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding-top:1rem;border-top:1px solid var(--rule)">
+          <div style="font-size:13.5px;color:var(--text2)">Positioning QA &amp; testing as the foundational prerequisite for enterprise AI deployment.</div>
+          <a href="https://calendly.com/gene-darocha-voxstar/30min" target="_blank" class="btn-filled" style="font-size:13px;padding:8px 18px">Review My AI System →</a>
         </div>
       </div>
     </section>
@@ -3862,10 +3958,10 @@
             <li>Direct bot-invitation gateways configured for ChatGPT, Perplexity, and Claude</li>
             <li>Semantic HTML restructuring tailored to LLM extraction parsers</li>
             <li>Comprehensive site mapping and index forcing for AI agents</li>
-            <li>Guaranteed accurate company citation across AI search answers</li>
+            <li>High-assurance entity and brand optimization for AI search engine answers</li>
           </ul>
           <a href="https://calendly.com/gene-darocha-voxstar/30min" target="_blank" class="ec-cta"
-            style="color:var(--accent2)">Book GEO Strategy Call →</a>
+            style="color:var(--accent2)">Improve My AI Visibility →</a>
         </div>
 
       </div>
@@ -4561,7 +4657,16 @@
     <div class="site-wrap">
       <div class="footer-top">
         <div>
-          <div class="footer-brand-name">Gene Da Rocha</div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+            <a href="#" class="nav-logo" aria-label="GDR AI Systems Engineer">
+              <img id="footerLogoImg" src="images/logo-option1.svg" alt="GDR AI Systems Engineer" class="nav-logo-svg" height="36">
+            </a>
+            <div class="logo-switcher-wrap" title="Preview Logo Designs">
+              <span style="color:var(--text3);font-size:10px">Logo Option:</span>
+              <button class="logo-opt-btn active" id="btnLogoOpt1" onclick="switchLogo(1)">Opt 1</button>
+              <button class="logo-opt-btn" id="btnLogoOpt2" onclick="switchLogo(2)">Opt 2</button>
+            </div>
+          </div>
           <div class="footer-tagline">Build with intention · Deploy with governance · Scale with trust</div>
         </div>
         <div class="footer-links-grid">
@@ -5408,6 +5513,41 @@
           closeDrawer();
         });
       });
+    })();
+
+    // Logo Switcher Controller (Option 1 vs Option 2)
+    function switchLogo(opt) {
+      const logoSrc = opt === 2 ? 'images/logo-option2.svg' : 'images/logo-option1.svg';
+      const favSrc = opt === 2 ? 'favicon-option2.svg' : 'favicon-option1.svg';
+      
+      const navImg = document.getElementById('navLogoImg');
+      const drawerImg = document.getElementById('drawerLogoImg');
+      const footerImg = document.getElementById('footerLogoImg');
+      const btn1 = document.getElementById('btnLogoOpt1');
+      const btn2 = document.getElementById('btnLogoOpt2');
+      
+      if (navImg) navImg.src = logoSrc;
+      if (drawerImg) drawerImg.src = logoSrc;
+      if (footerImg) footerImg.src = logoSrc;
+      
+      if (btn1 && btn2) {
+        btn1.classList.toggle('active', opt === 1);
+        btn2.classList.toggle('active', opt === 2);
+      }
+      
+      const favLink = document.querySelector('link[rel="icon"]');
+      if (favLink) favLink.href = favSrc;
+      
+      try {
+        localStorage.setItem('gdr_logo_option', opt);
+      } catch (e) {}
+    }
+
+    (function() {
+      try {
+        const saved = localStorage.getItem('gdr_logo_option');
+        if (saved) switchLogo(parseInt(saved, 10));
+      } catch (e) {}
     })();
   </script>
 </body>

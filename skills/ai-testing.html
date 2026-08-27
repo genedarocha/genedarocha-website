@@ -8,6 +8,8 @@
   <meta name="description" content="Mastering End-to-End AI System Testing: DeepEval framework, RAG metrics (Faithfulness, Relevancy, Precision), AI Agent trajectory testing, MCP Server compliance, and PyTest CI/CD automation by Gene Da Rocha.">
   <meta name="keywords" content="AI Testing, DeepEval, RAG Evaluation, AI Agent Testing, MCP Server Testing, Chatbot QA, LLM-as-a-Judge, PyTest AI CI/CD, Gene Da Rocha">
   <link rel="canonical" href="https://genedarocha.com/skills/ai-testing.html">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="alternate icon" href="../favicon-option1.svg">
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 
   <!-- Open Graph / Social Media -->
@@ -24,46 +26,30 @@
   <meta name="twitter:image" content="https://genedarocha.com/images/ai-testing-hero.jpg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --ink: #0f0e11;
-      --paper: #f7f5f0;
-      --paper2: #efece6;
-      --paper3: #e8e4dc;
-      --text: #0f0e11;
-      --text2: #4a4558;
-      --text3: #7a7490;
-      --rule: rgba(15, 14, 17, 0.1);
-      --accent: #5b4fff;
-      --accent2: #ff5c35;
-      --accent3: #00c896;
-      --accent-light: rgba(91, 79, 255, 0.08);
-      --radius: 12px;
-      --radius-lg: 20px;
+      --ink: #0f0e11; --paper: #f7f5f0; --paper2: #efece6; --paper3: #e8e4dc;
+      --text: #0f0e11; --text2: #4a4558; --text3: #7a7490;
+      --rule: rgba(15,14,17,0.1); --accent: #5b4fff; --accent2: #ff5c35; --accent3: #00c896;
+      --radius: 12px; --radius-lg: 20px;
     }
     @media (prefers-color-scheme: dark) {
       :root {
-        --ink: #f7f5f0;
-        --paper: #0f0e11;
-        --paper2: #161420;
-        --paper3: #1e1b28;
-        --text: #f0eee9;
-        --text2: #a09ab8;
-        --text3: #6b6585;
-        --rule: rgba(247, 245, 240, 0.08);
+        --ink: #f7f5f0; --paper: #0f0e11; --paper2: #161420; --paper3: #1e1b28;
+        --text: #f0eee9; --text2: #a09ab8; --text3: #6b6585;
+        --rule: rgba(247,245,240,0.08);
       }
     }
     html { scroll-behavior: smooth; }
     body {
-      background: var(--paper); color: var(--text);
-      font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6;
-      overflow-x: hidden; -webkit-font-smoothing: antialiased;
+      background: var(--paper); color: var(--text); font-family: 'Inter', sans-serif;
+      font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased;
     }
     .site-wrap { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
-    
+
     /* NAV */
     nav {
       position: sticky; top: 0; z-index: 100; padding: 1.25rem 0;
@@ -74,10 +60,11 @@
       max-width: 1100px; margin: 0 auto; padding: 0 2rem;
     }
     .nav-logo {
-      font-family: 'Fraunces', serif; font-weight: 700; font-size: 1.1rem;
-      color: var(--text); text-decoration: none; letter-spacing: -0.02em;
+      display: inline-flex; align-items: center; text-decoration: none;
+      transition: transform 0.2s ease, opacity 0.2s ease;
     }
-    .nav-logo sup { font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--accent); margin-left: 4px; }
+    .nav-logo:hover { opacity: 0.92; transform: translateY(-1px); }
+    .nav-logo-svg { height: 38px; width: auto; display: block; }
     .nav-right { display: flex; align-items: center; gap: 1.75rem; }
     .nav-link { font-size: 13px; font-weight: 500; color: var(--text3); text-decoration: none; transition: color 0.2s; }
     .nav-link:hover, .nav-link.active { color: var(--text); }
@@ -186,7 +173,9 @@
   <!-- NAV -->
   <nav>
     <div class="nav-inner">
-      <a href="../index.html" class="nav-logo">Gene Da Rocha <sup>GDR</sup></a>
+      <a href="../index.html" class="nav-logo" aria-label="GDR AI Systems Engineer">
+        <img src="../images/logo-option1.svg" alt="GDR AI Systems Engineer" class="nav-logo-svg" height="38">
+      </a>
       <div class="nav-right">
         <div class="nav-dropdown-wrap">
           <span class="nav-link dropdown-trigger active">Skills & Services <span class="chevron">▼</span></span>

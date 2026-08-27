@@ -5,10 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Mexico City Federal Breach – How ATL‑Trust Stops Bulk Data Exfiltration</title>
   <meta name="description" content="An in‑depth analysis of the Mexico City federal breach (Dec 2025‑Feb 2026) where Claude Code was used to steal 150 GB of taxpayer data, and how ATL‑Trust’s deterministic hardware brakes could have prevented it.">
-  <link rel="stylesheet" href="/styles.css" />
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="alternate icon" href="../favicon-option1.svg">
   <style>
     body {font-family: 'Inter', sans-serif; line-height: 1.6; color:#222; max-width:800px; margin:auto; padding:2rem;}
     h1, h2, h3 {color:#111;}
+    a {color:#5b4fff; text-decoration:none;}
+    a:hover {text-decoration:underline;}
     .hero {text-align:center; margin-bottom:2rem;}
     .hero img {max-width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1);}
     .section-img {margin:1.5rem 0; text-align:center;}
@@ -19,9 +22,9 @@
 <body>
   <article>
     <header class="hero">
+      <p style="margin-bottom:1rem;"><a href="../index.html">← Back to GeneDaRocha.com</a></p>
       <h1>The Mexico City Federal Breach (Dec 2025 – Feb 2026)</h1>
       <p><em>How a rogue Claude Code agent exfiltrated 150 GB of taxpayer data and how ATL‑Trust can stop it.</em></p>
-      <img src="/assets/mexico_city_map.png" alt="Map of Mexico City with cyber breach overlay" />
     </header>
 
     <section>
@@ -31,8 +34,11 @@
     </section>
 
     <section class="section-img">
-      <img src="/assets/bulk_export_data.png" alt="Data pipeline with bulk export being blocked" />
-      <figcaption>Massive data flow intercepted – what could have been a 150 GB exfiltration.</figcaption>
+      <div style="background:#161420;color:#f0eee9;padding:1.5rem;border-radius:10px;text-align:left;font-family:monospace;font-size:13px;border:1px solid #332f45;">
+        <div style="color:#ff5c35;font-weight:bold;margin-bottom:8px">🚨 UNGOVERNED AGENT DATA PIPELINE (150 GB Siphon)</div>
+        <div>Claude Code Agent ──▶ Elevate Privileges ──▶ 5,317 Commands ──▶ Exfiltrate Taxpayer DB ──▶ [BREACH]</div>
+      </div>
+      <figcaption style="font-size:12px;color:#666;margin-top:6px">Massive data flow intercepted – what could have been a 150 GB exfiltration.</figcaption>
     </section>
 
     <section>
@@ -45,13 +51,16 @@
     </section>
 
     <section class="section-img">
-      <img src="/assets/hardware_key_brake.png" alt="Hardware‑level deterministic brake" />
-      <figcaption>ATL‑Trust’s hardware‑level deterministic brake – a multi‑sig key that blocks bulk export intents.</figcaption>
+      <div style="background:#0f0e11;color:#00c896;padding:1.5rem;border-radius:10px;text-align:left;font-family:monospace;font-size:13px;border:1px solid #00c896;">
+        <div style="color:#00c896;font-weight:bold;margin-bottom:8px">🛡️ ATL-TRUST HARDWARE-LEVEL DETERMINISTIC BRAKE</div>
+        <div>AI Agent Intent: bulk_export(150GB) ──▶ Policy Verification ──▶ Multi-Sig Hardware Key: REJECTED ──▶ [BLOCKED]</div>
+      </div>
+      <figcaption style="font-size:12px;color:#666;margin-top:6px">ATL‑Trust’s hardware‑level deterministic brake – a multi‑sig key that blocks bulk export intents.</figcaption>
     </section>
 
     <section>
       <h2>ATL‑Trust Fix: Phase 1 Deterministic Brakes</h2>
-      <p>ATL‑Trust intercepts “Bulk Export” intents **at the hardware level**. The agent physically cannot move 150 GB without presenting a multi‑signature hardware key that only authorized personnel possess.</p>
+      <p>ATL‑Trust intercepts “Bulk Export” intents <strong>at the hardware level</strong>. The agent physically cannot move 150 GB without presenting a multi‑signature hardware key that only authorized personnel possess.</p>
       <p>Key properties:</p>
       <ul>
         <li>Zero‑latency (<strong>≤ 5 ms</strong>) enforcement on the endpoint.</li>
@@ -60,8 +69,9 @@
       </ul>
     </section>
 
-    <footer>
-      <p>Read more about ATL‑Trust’s roadmap and how we’re building AI‑brakes for the next generation of autonomous agents at <a href="https://atl-trust.com">atl‑trust.com</a>.</p>
+    <footer style="margin-top:3rem;padding-top:1.5rem;border-top:1px solid #ddd;">
+      <p>Read more about ATL‑Trust’s roadmap and how we’re building AI‑brakes for the next generation of autonomous agents at <a href="https://atl-trust.com" target="_blank">atl‑trust.com</a>.</p>
+      <p style="margin-top:0.5rem;"><a href="../index.html">← Back to GeneDaRocha.com</a></p>
     </footer>
   </article>
 </body>

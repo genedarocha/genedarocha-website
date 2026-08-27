@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 56" fill="none" class="gdr-logo-svg">
+  <defs>
+    <linearGradient id="opt2-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5b4fff" />
+      <stop offset="100%" stop-color="#ff5c35" />
+    </linearGradient>
+    <linearGradient id="ai-chip-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00c896" />
+      <stop offset="100%" stop-color="#5b4fff" />
+    </linearGradient>
+  </defs>
+
+  <!-- Left: Cyber AI Chip Crest -->
+  <g transform="translate(6, 4)">
+    <!-- Rounded Shield Background -->
+    <rect x="2" y="2" width="44" height="44" rx="12" fill="#161420" stroke="url(#opt2-grad)" stroke-width="2" />
+    
+    <!-- Chip Corner Pins -->
+    <line x1="10" y1="2" x2="10" y2="6" stroke="#00c896" stroke-width="2" />
+    <line x1="24" y1="2" x2="24" y2="6" stroke="#5b4fff" stroke-width="2" />
+    <line x1="38" y1="2" x2="38" y2="6" stroke="#ff5c35" stroke-width="2" />
+
+    <line x1="10" y1="42" x2="10" y2="46" stroke="#00c896" stroke-width="2" />
+    <line x1="24" y1="42" x2="24" y2="46" stroke="#5b4fff" stroke-width="2" />
+    <line x1="38" y1="42" x2="38" y2="46" stroke="#ff5c35" stroke-width="2" />
+
+    <!-- GDR Letterforms inside chip -->
+    <path d="M14 16 H22 V20 H17 V28 H22 V24 H19.5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+    <circle cx="33" cy="24" r="7" fill="url(#opt2-grad)" />
+    <text x="33" y="27.5" font-family="'JetBrains Mono', monospace" font-weight="900" font-size="9" fill="#ffffff" text-anchor="middle">AI</text>
+  </g>
+
+  <!-- Right: Logotype -->
+  <g transform="translate(62, 12)">
+    <text x="0" y="22" font-family="'Inter', sans-serif" font-weight="800" font-size="21" letter-spacing="0.1em" fill="currentColor" class="logo-text-primary">GDR</text>
+    <text x="56" y="22" font-family="'Inter', sans-serif" font-weight="300" font-size="21" letter-spacing="0.04em" fill="var(--accent, #5b4fff)">//</text>
+    <text x="76" y="22" font-family="'Inter', sans-serif" font-weight="800" font-size="21" letter-spacing="0.06em" fill="url(#opt2-grad)">AI</text>
+    
+    <text x="0" y="34" font-family="'JetBrains Mono', monospace" font-weight="600" font-size="8.5" letter-spacing="0.2em" fill="#a09ab8" text-transform="uppercase">GOVERNED SYSTEMS</text>
+  </g>
+</svg>
