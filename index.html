@@ -2523,7 +2523,9 @@
     .rec-grid-container {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 1.5rem;
+      gap: 1.25rem;
+      width: 100%;
+      box-sizing: border-box;
       transition: all 0.3s ease;
     }
 
@@ -2542,14 +2544,15 @@
     .rec-card {
       background: var(--paper2);
       border: 1px solid var(--rule);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
+      border-radius: var(--radius);
+      padding: 1.15rem 1.2rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       position: relative;
       transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-      min-height: 290px;
+      min-height: 220px;
+      box-sizing: border-box;
     }
 
     .rec-card:hover {
@@ -5263,8 +5266,8 @@
 
         gridEl.innerHTML = visibleItems.map(item => {
           const initials = getInitials(item.name);
-          const shortText = item.text.length > 210 ? item.text.substring(0, 200) + '...' : item.text;
-          const isTruncated = item.text.length > 210;
+          const shortText = item.text.length > 155 ? item.text.substring(0, 145) + '...' : item.text;
+          const isTruncated = item.text.length > 155;
 
           return `
             <div class="rec-card">
