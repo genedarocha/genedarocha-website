@@ -112,12 +112,64 @@
     .di-info { display: flex; flex-direction: column; }
     .di-name { font-size: 13.5px; font-weight: 600; color: var(--text); }
     .di-desc { font-size: 11.5px; color: var(--text2); }
-
     .nav-hire {
       font-size: 13px; font-weight: 600; color: var(--paper); background: var(--text);
       border-radius: 100px; padding: 8px 18px; text-decoration: none; transition: all 0.2s;
     }
     .nav-hire:hover { background: var(--accent); transform: translateY(-1px); }
+
+    /* MOBILE HAMBURGER & DRAWER */
+    .nav-hamburger {
+      display: none; flex-direction: column; justify-content: space-between;
+      width: 28px; height: 20px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 110;
+    }
+    .nav-hamburger span {
+      width: 100%; height: 2px; background-color: var(--text); border-radius: 2px; transition: all 0.3s ease;
+    }
+    .mobile-drawer-overlay {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(4px);
+      z-index: 998; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+    }
+    .mobile-drawer-overlay.active { opacity: 1; pointer-events: auto; }
+    .mobile-drawer {
+      position: fixed; top: 0; right: -100%; width: 320px; max-width: 85vw; height: 100vh;
+      background: var(--paper); box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
+      z-index: 999; display: flex; flex-direction: column; transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .mobile-drawer.active { right: 0; }
+    .mobile-drawer-header {
+      padding: 1.25rem 1.5rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--rule);
+    }
+    .mobile-drawer-close {
+      background: transparent; border: none; font-size: 1.8rem; color: var(--text); cursor: pointer; line-height: 1; padding: 0 4px;
+    }
+    .mobile-drawer-body {
+      padding: 1.5rem; flex-grow: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 0.85rem;
+    }
+    .mobile-nav-link {
+      font-size: 1rem; font-weight: 600; color: var(--text); text-decoration: none;
+      padding: 10px 0; border-bottom: 1px solid var(--rule); display: flex; align-items: center; justify-content: space-between;
+    }
+    .mobile-acc-item { border-bottom: 1px solid var(--rule); }
+    .mobile-acc-trigger {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      background: transparent; border: none; font-size: 1rem; font-weight: 600;
+      color: var(--text); padding: 10px 0; cursor: pointer; text-align: left;
+    }
+    .mobile-acc-trigger .acc-chevron { font-size: 9px; transition: transform 0.2s ease; color: var(--text3); }
+    .mobile-acc-item.active .acc-chevron { transform: rotate(180deg); }
+    .mobile-acc-content { display: none; flex-direction: column; gap: 10px; padding: 6px 0 12px 10px; }
+    .mobile-acc-item.active .mobile-acc-content { display: flex; }
+    .mobile-acc-content a {
+      font-size: 0.9rem; font-weight: 500; color: var(--text2); text-decoration: none; display: flex; align-items: center; gap: 8px;
+    }
+    .mobile-acc-content a:hover { color: var(--accent); }
+    .mobile-drawer-footer { padding: 1.25rem 1.5rem; border-top: 1px solid var(--rule); }
+    @media (max-width: 900px) {
+      .nav-right { display: none !important; }
+      .nav-hamburger { display: flex !important; }
+    }
 
     /* HEADER & CONTENT */
     .article-header { padding: 4rem 0 2.5rem; text-align: left; }
@@ -185,87 +237,188 @@
 </head>
 
 <body>
-  <!-- NAV -->
+  <!-- ── NAV ── -->
   <nav>
     <div class="nav-inner">
-      <a href="../index.html" class="nav-logo" aria-label="GDR AI Systems Engineer">
-        <img src="../images/logo-option1.svg" alt="GDR AI Systems Engineer" class="nav-logo-svg" height="38">
-      </a>
+      <div style="display:flex;align-items:center;">
+        <a href="../index.html" class="nav-logo" aria-label="GDR AI Systems Engineer">
+          <img src="../images/logo-option1.svg" alt="GDR AI Systems Engineer" class="nav-logo-svg" height="48">
+        </a>
+      </div>
       <div class="nav-right">
         <div class="nav-dropdown-wrap">
-          <span class="nav-link dropdown-trigger active">Skills & Services <span class="chevron">▼</span></span>
+          <a href="index.html" class="nav-link dropdown-trigger active">Website &amp; AI Skills <span class="chevron">▼</span></a>
           <div class="nav-dropdown">
             <a href="index.html" class="dropdown-item">
               <span class="di-icon">💡</span>
               <div class="di-info">
                 <span class="di-name">Skills Overview Hub</span>
-                <span class="di-desc">Web, AI, SEO & Testing Capabilities</span>
+                <span class="di-desc">AI systems, testing, architecture &amp; engineering</span>
               </div>
             </a>
             <a href="ai-architecture.html" class="dropdown-item">
               <span class="di-icon">🏛️</span>
               <div class="di-info">
-                <span class="di-name">AI Architecture & Integration</span>
-                <span class="di-desc">Legacy tech & zero-trust AI security</span>
+                <span class="di-name">AI Architecture &amp; Integration</span>
+                <span class="di-desc">Legacy systems &amp; zero-trust AI architecture</span>
               </div>
             </a>
             <a href="ai-development.html" class="dropdown-item">
               <span class="di-icon">🤖</span>
               <div class="di-info">
-                <span class="di-name">AI Development & Agents</span>
-                <span class="di-desc">Multi-agent systems & MCP protocols</span>
+                <span class="di-name">AI Development &amp; Agents</span>
+                <span class="di-desc">Autonomous systems, MCP protocols &amp; tool calling</span>
               </div>
             </a>
             <a href="ai-testing.html" class="dropdown-item">
               <span class="di-icon">🧪</span>
               <div class="di-info">
-                <span class="di-name">AI Testing & DeepEval QA</span>
-                <span class="di-desc">RAG metrics, agent tracing & CI/CD</span>
+                <span class="di-name">AI Testing &amp; DeepEval QA</span>
+                <span class="di-desc">Evaluation, agent tracing &amp; automated CI/CD</span>
               </div>
             </a>
           </div>
         </div>
-        <a href="../index.html#voxstar" class="nav-link">Enterprise AI</a>
+        <div class="nav-dropdown-wrap">
+          <a href="../index.html#ventures" class="nav-link dropdown-trigger">Apps-Venture <span class="chevron">▼</span></a>
+          <div class="nav-dropdown">
+            <a href="../index.html#voxstar-com" class="dropdown-item">
+              <span class="di-icon">🌐</span>
+              <div class="di-info">
+                <span class="di-name">voxstar.com</span>
+                <span class="di-desc">AI Systems &amp; Automation Consultancy</span>
+              </div>
+            </a>
+            <a href="../index.html#voxstar-ai" class="dropdown-item">
+              <span class="di-icon">💬</span>
+              <div class="di-info">
+                <span class="di-name">voxstar.ai</span>
+                <span class="di-desc">Voice &amp; Chat Agent Platform</span>
+              </div>
+            </a>
+            <a href="../index.html#aitoolboard-com" class="dropdown-item">
+              <span class="di-icon">🧰</span>
+              <div class="di-info">
+                <span class="di-name">aitoolboard.com</span>
+                <span class="di-desc">Curated AI Tool &amp; Intelligence Hub</span>
+              </div>
+            </a>
+            <a href="../index.html#wiredvibeapp-com" class="dropdown-item">
+              <span class="di-icon">🎧</span>
+              <div class="di-info">
+                <span class="di-name">wiredvibeapp.com</span>
+                <span class="di-desc">Neuroscience Audio Platform</span>
+              </div>
+            </a>
+            <a href="../index.html#atl-trust-com" class="dropdown-item">
+              <span class="di-icon">🛡️</span>
+              <div class="di-info">
+                <span class="di-name">atl-trust.com</span>
+                <span class="di-desc">Autonomous AI Control Layer</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <a href="../index.html#offers" class="nav-link">Ways to Work</a>
+        <a href="../index.html#voxstar" class="nav-link">ATL-Trust</a>
+        <a href="../index.html#hackathons" class="nav-link">Hackathons</a>
         <a href="../index.html#about" class="nav-link">About</a>
         <a href="../index.html#recommendations" class="nav-link">Recommendations</a>
         <a href="https://genedarocha.substack.com" target="_blank" class="nav-link">Blog</a>
-        <a href="https://calendly.com/gene-darocha-voxstar/30min" target="_blank" class="nav-hire">Book a call ↗</a>
+        <a href="https://calendly.com/gene-darocha-voxstar/30min" target="_blank" class="nav-hire">Book Strategy Call ↗</a>
       </div>
+
+      <!-- HAMBURGER BUTTON FOR MOBILE -->
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </nav>
 
+  <!-- MOBILE NAV DRAWER -->
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay"></div>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer-header">
+      <a href="../index.html" class="nav-logo" aria-label="GDR AI Systems Engineer">
+        <img src="../images/logo-option1.svg" alt="GDR AI Systems Engineer" class="nav-logo-svg" height="36">
+      </a>
+      <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="mobile-drawer-body">
+      <!-- Website & AI Skills Accordion -->
+      <div class="mobile-acc-item">
+        <button class="mobile-acc-trigger">
+          <span>Website &amp; AI Skills</span>
+          <span class="acc-chevron">▼</span>
+        </button>
+        <div class="mobile-acc-content">
+          <a href="index.html">💡 Skills Overview Hub</a>
+          <a href="ai-architecture.html">🏛️ AI Architecture &amp; Integration</a>
+          <a href="ai-development.html">🤖 AI Development &amp; Agents</a>
+          <a href="ai-testing.html">🧪 AI Testing &amp; DeepEval QA</a>
+        </div>
+      </div>
+
+      <!-- Apps-Venture Accordion -->
+      <div class="mobile-acc-item">
+        <button class="mobile-acc-trigger">
+          <span>Apps-Venture</span>
+          <span class="acc-chevron">▼</span>
+        </button>
+        <div class="mobile-acc-content">
+          <a href="../index.html#voxstar-com">🌐 voxstar.com</a>
+          <a href="../index.html#voxstar-ai">💬 voxstar.ai</a>
+          <a href="../index.html#aitoolboard-com">🧰 aitoolboard.com</a>
+          <a href="../index.html#wiredvibeapp-com">🎧 wiredvibeapp.com</a>
+          <a href="../index.html#atl-trust-com">🛡️ atl-trust.com</a>
+        </div>
+      </div>
+
+      <a href="../index.html#offers" class="mobile-nav-link">Ways to Work</a>
+      <a href="../index.html#voxstar" class="mobile-nav-link">ATL-Trust</a>
+      <a href="../index.html#hackathons" class="mobile-nav-link">Hackathons</a>
+      <a href="../index.html#about" class="mobile-nav-link">About</a>
+      <a href="../index.html#recommendations" class="mobile-nav-link">Recommendations (38)</a>
+      <a href="https://genedarocha.substack.com" target="_blank" class="mobile-nav-link">Blog ↗</a>
+    </div>
+    <div class="mobile-drawer-footer">
+      <a href="https://calendly.com/gene-darocha-voxstar/30min" target="_blank" class="nav-hire" style="width:100%; justify-content:center; text-align:center;">Book Strategy Call ↗</a>
+    </div>
+  </div>
+
   <div class="site-wrap">
+    <!-- HEADER -->
     <header class="article-header">
-      <div class="breadcrumb">Pillars of Enterprise Engineering</div>
-      <h1 class="article-h1">AI Architecture for Existing Enterprise Systems</h1>
-      <p class="article-intro">Integrating modern Generative AI, Retrieval-Augmented Generation (RAG), and Autonomous Agent networks into established corporate IT infrastructure without disrupting legacy databases, security perimeters, or compliance protocols.</p>
+      <div class="breadcrumb">Skills / AI Architecture</div>
+      <h1 class="article-h1">AI Architecture for Existing Systems</h1>
+      <p class="article-intro">Bridging legacy enterprise infrastructure with modern foundation models, vector retrieval pipelines, and verifiable zero-trust governance.</p>
+      
+      <div class="hero-img-wrap">
+        <img src="../images/ai-architecture-hero.jpg" alt="AI Architecture, Microservices & Zero-Trust Integration Topology">
+      </div>
     </header>
 
-    <div class="hero-img-wrap">
-      <img src="../images/ai-architecture-hero.jpg" alt="Enterprise AI System Architecture Visualization">
-    </div>
-
-    <!-- MAIN ARCHITECTURE PILLARS -->
+    <!-- ARCHITECTURE MODULES -->
     <section>
-      <h2 style="font-family:'Fraunces',serif; font-size:2rem; margin-bottom:1.5rem;">5 Architectural Foundations for Enterprise AI Integration</h2>
-      
       <div class="arch-grid">
         <div class="arch-card">
-          <span class="arch-icon">🛡️</span>
-          <h3 class="arch-h3">Zero-Trust AI Security Proxy</h3>
-          <p class="arch-p">Implementing an inline security gateway between enterprise users, application layers, and external LLM endpoints. Enforces automatic PII redaction, prompt injection defense, and granular token audit logging (utilizing the <strong>ATL Trust</strong> proxy model).</p>
+          <span class="arch-icon">🏢</span>
+          <h3 class="arch-h3">Legacy Systems Integration</h3>
+          <p class="arch-p">Connecting LLMs and vector databases with SQL databases, mainframe queues, ERPs, and internal REST APIs without compromising data integrity or existing business logic.</p>
+        </div>
+
+        <div class="arch-card">
+          <span class="arch-icon">🔒</span>
+          <h3 class="arch-h3">Zero-Trust AI Gateways & PII Sanitization</h3>
+          <p class="arch-p">Implementing hardware-attested, on-premise proxy filters that sanitize PII, block prompt injection attacks, and enforce strict role-based access control before payloads hit LLM providers.</p>
         </div>
 
         <div class="arch-card">
           <span class="arch-icon">⚡</span>
-          <h3 class="arch-h3">Hybrid Vector & Relational Data Bridges</h3>
-          <p class="arch-p">Connecting traditional SQL databases (PostgreSQL, Oracle, SQL Server) and NoSQL clusters to vector indexing engines (Qdrant, Pinecone, pgvector) with real-time CDC (Change Data Capture) pipelines.</p>
-        </div>
-
-        <div class="arch-card">
-          <span class="arch-icon">🔄</span>
-          <h3 class="arch-h3">High-Throughput RAG Pipeline Design</h3>
-          <p class="arch-p">Structuring multi-stage retrieval pipelines combining BM25 keyword search, dense vector embeddings, cross-encoder re-ranking, and dynamic context trimming for sub-500ms latency.</p>
+          <h3 class="arch-h3">Hybrid Retrieval & Vector Topologies</h3>
+          <p class="arch-p">Architecting scalable RAG systems combining sparse BM25 keyword search with dense vector embeddings (pgvector, Qdrant, Pinecone) and cross-encoder re-ranking pipelines.</p>
         </div>
 
         <div class="arch-card">
@@ -300,21 +453,74 @@
   </div>
 
   <script>
-    const dropdownWrap = document.querySelector('.nav-dropdown-wrap');
-    if (dropdownWrap) {
-      const trigger = dropdownWrap.querySelector('.dropdown-trigger');
+    // Submenu click / touch toggles
+    document.querySelectorAll('.nav-dropdown-wrap').forEach(wrap => {
+      const trigger = wrap.querySelector('.dropdown-trigger');
       if (trigger) {
         trigger.addEventListener('click', (e) => {
           e.stopPropagation();
-          dropdownWrap.classList.toggle('active');
+          const isActive = wrap.classList.contains('active');
+          document.querySelectorAll('.nav-dropdown-wrap').forEach(w => w.classList.remove('active'));
+          if (!isActive) wrap.classList.add('active');
         });
       }
-      document.addEventListener('click', (e) => {
-        if (!dropdownWrap.contains(e.target)) {
-          dropdownWrap.classList.remove('active');
+    });
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.nav-dropdown-wrap')) {
+        document.querySelectorAll('.nav-dropdown-wrap').forEach(w => w.classList.remove('active'));
+      }
+    });
+
+    // Mobile Drawer Controller
+    (function() {
+      const hamburger = document.getElementById('navHamburger');
+      const drawer = document.getElementById('mobileDrawer');
+      const overlay = document.getElementById('mobileDrawerOverlay');
+      const closeBtn = document.getElementById('mobileDrawerClose');
+
+      function openDrawer() {
+        if (drawer && overlay && hamburger) {
+          drawer.classList.add('active');
+          overlay.classList.add('active');
+          hamburger.classList.add('active');
+          document.body.style.overflow = 'hidden';
         }
+      }
+
+      function closeDrawer() {
+        if (drawer && overlay && hamburger) {
+          drawer.classList.remove('active');
+          overlay.classList.remove('active');
+          hamburger.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      }
+
+      if (hamburger) {
+        hamburger.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (drawer.classList.contains('active')) closeDrawer(); else openDrawer();
+        });
+      }
+      if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+      if (overlay) overlay.addEventListener('click', closeDrawer);
+
+      const accTriggers = document.querySelectorAll('.mobile-acc-trigger');
+      accTriggers.forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const parent = trigger.closest('.mobile-acc-item');
+          if (parent) parent.classList.toggle('active');
+        });
       });
-    }
+
+      const drawerLinks = document.querySelectorAll('.mobile-drawer a');
+      drawerLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          closeDrawer();
+        });
+      });
+    })();
   </script>
 </body>
 
