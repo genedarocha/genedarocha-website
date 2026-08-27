@@ -5373,11 +5373,58 @@
         document.body.style.overflow = '';
       }
 
+      function stopAutoplay() {
+        if (autoplayInterval) {
+          clearInterval(autoplayInterval);
+          autoplayInterval = null;
+        }
+      }
+
       function startAutoplay() {
         stopAutoplay();
         if (!isAutoplay) return;
         autoplayInterval = setInterval(() => {
-          const filtered = getFiltere      if (playPauseBtn) {
+          const filtered = getFilteredData();
+          const perPage = getItemsPerPage();
+          if (filtered.length <= perPage) return;
+          if (currentIndex + perPage >= filtered.length) {
+            currentIndex = 0;
+          } else {
+            currentIndex += 1;
+          }
+          renderCards();
+        }, 5000);
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+          stopAutoplay();
+          const filtered = getFilteredData();
+          const perPage = getItemsPerPage();
+          if (currentIndex <= 0) {
+            currentIndex = Math.max(0, filtered.length - perPage);
+          } else {
+            currentIndex -= 1;
+          }
+          renderCards();
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+          stopAutoplay();
+          const filtered = getFilteredData();
+          const perPage = getItemsPerPage();
+          if (currentIndex + perPage >= filtered.length) {
+            currentIndex = 0;
+          } else {
+            currentIndex += 1;
+          }
+          renderCards();
+        });
+      }
+
+      if (playPauseBtn) {
         playPauseBtn.addEventListener('click', () => {
           isAutoplay = !isAutoplay;
           playPauseBtn.textContent = isAutoplay ? '⏸' : '▶';
