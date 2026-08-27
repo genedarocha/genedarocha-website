@@ -284,37 +284,6 @@
       display: block;
     }
 
-    /* Option switcher pill */
-    .logo-switcher-wrap {
-      display: inline-flex;
-      align-items: center;
-      background: var(--paper2);
-      border: 1px solid var(--rule);
-      border-radius: 20px;
-      padding: 3px 6px;
-      gap: 4px;
-      margin-left: 0.75rem;
-      font-size: 11px;
-    }
-
-    .logo-opt-btn {
-      background: none;
-      border: none;
-      padding: 3px 8px;
-      border-radius: 12px;
-      font-size: 10px;
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 600;
-      color: var(--text3);
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .logo-opt-btn.active {
-      background: var(--text);
-      color: var(--paper);
-    }
-
     .nav-right {
       display: flex;
       align-items: center;
@@ -4660,15 +4629,10 @@
     <div class="site-wrap">
       <div class="footer-top">
         <div>
-          <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+          <div style="margin-bottom:8px">
             <a href="#" class="nav-logo" aria-label="GDR AI Systems Engineer">
-              <img id="footerLogoImg" src="images/logo-option1.svg" alt="GDR AI Systems Engineer" class="nav-logo-svg" height="36">
+              <img id="footerLogoImg" src="images/logo-option1.svg" alt="GDR AI Systems Engineer" class="nav-logo-svg" height="42">
             </a>
-            <div class="logo-switcher-wrap" title="Preview Logo Designs">
-              <span style="color:var(--text3);font-size:10px">Logo Option:</span>
-              <button class="logo-opt-btn active" id="btnLogoOpt1" onclick="switchLogo(1)">Opt 1</button>
-              <button class="logo-opt-btn" id="btnLogoOpt2" onclick="switchLogo(2)">Opt 2</button>
-            </div>
           </div>
           <div class="footer-tagline">Build with intention · Deploy with governance · Scale with trust</div>
         </div>
@@ -5371,43 +5335,7 @@
         stopAutoplay();
         if (!isAutoplay) return;
         autoplayInterval = setInterval(() => {
-          const filtered = getFilteredData();
-          const perPage = getItemsPerPage();
-          if (filtered.length <= perPage) return;
-          currentIndex += 1;
-          if (currentIndex > filtered.length - perPage) {
-            currentIndex = 0;
-          }
-          renderCards();
-        }, 6000);
-      }
-
-      function stopAutoplay() {
-        if (autoplayInterval) clearInterval(autoplayInterval);
-      }
-
-      if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
-          const perPage = getItemsPerPage();
-          currentIndex = Math.max(0, currentIndex - perPage);
-          renderCards();
-        });
-      }
-
-      if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-          const filtered = getFilteredData();
-          const perPage = getItemsPerPage();
-          if (currentIndex + perPage < filtered.length) {
-            currentIndex += perPage;
-          } else {
-            currentIndex = 0;
-          }
-          renderCards();
-        });
-      }
-
-      if (playPauseBtn) {
+          const filtered = getFiltere      if (playPauseBtn) {
         playPauseBtn.addEventListener('click', () => {
           isAutoplay = !isAutoplay;
           playPauseBtn.textContent = isAutoplay ? '⏸' : '▶';
@@ -5515,41 +5443,6 @@
           closeDrawer();
         });
       });
-    })();
-
-    // Logo Switcher Controller (Option 1 vs Option 2)
-    function switchLogo(opt) {
-      const logoSrc = opt === 2 ? 'images/logo-option2.svg' : 'images/logo-option1.svg';
-      const favSrc = opt === 2 ? 'favicon-option2.svg' : 'favicon-option1.svg';
-      
-      const navImg = document.getElementById('navLogoImg');
-      const drawerImg = document.getElementById('drawerLogoImg');
-      const footerImg = document.getElementById('footerLogoImg');
-      const btn1 = document.getElementById('btnLogoOpt1');
-      const btn2 = document.getElementById('btnLogoOpt2');
-      
-      if (navImg) navImg.src = logoSrc;
-      if (drawerImg) drawerImg.src = logoSrc;
-      if (footerImg) footerImg.src = logoSrc;
-      
-      if (btn1 && btn2) {
-        btn1.classList.toggle('active', opt === 1);
-        btn2.classList.toggle('active', opt === 2);
-      }
-      
-      const favLink = document.querySelector('link[rel="icon"]');
-      if (favLink) favLink.href = favSrc;
-      
-      try {
-        localStorage.setItem('gdr_logo_option', opt);
-      } catch (e) {}
-    }
-
-    (function() {
-      try {
-        const saved = localStorage.getItem('gdr_logo_option');
-        if (saved) switchLogo(parseInt(saved, 10));
-      } catch (e) {}
     })();
   </script>
 </body>
