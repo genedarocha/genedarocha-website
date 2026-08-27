@@ -70,28 +70,50 @@
     .nav-link:hover, .nav-link.active { color: var(--text); }
     
     .nav-dropdown-wrap { position: relative; display: inline-block; }
-    .dropdown-trigger { display: inline-flex; align-items: center; gap: 4px; cursor: pointer; }
-    .dropdown-trigger .chevron { font-size: 8px; transition: transform 0.2s; }
+    .dropdown-trigger { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; user-select: none; }
+    .dropdown-trigger .chevron { font-size: 9px; transition: transform 0.2s ease; display: inline-block; }
+    
     .nav-dropdown {
-      position: absolute; top: calc(100% + 14px); left: -10px;
-      background: rgba(247, 245, 240, 0.98); backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px); border: 1px solid var(--rule);
+      position: absolute; top: calc(100% + 8px); left: -10px;
+      background: #ffffff;
+      border: 1px solid rgba(15, 14, 17, 0.15);
       border-radius: var(--radius); padding: 8px; width: 310px;
-      opacity: 0; pointer-events: none; transition: all 0.2s ease;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08); z-index: 1000;
+      opacity: 0; pointer-events: none; transform: translateY(6px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      box-shadow: 0 14px 40px rgba(0,0,0,0.14), 0 2px 8px rgba(0,0,0,0.06);
+      z-index: 2000;
     }
-    @media (prefers-color-scheme: dark) { .nav-dropdown { background: rgba(22, 20, 32, 0.98); } }
-    .nav-dropdown-wrap:hover .nav-dropdown { opacity: 1; pointer-events: auto; transform: translateY(0); }
-    .nav-dropdown-wrap:hover .chevron { transform: rotate(180deg); }
+    .nav-dropdown::before {
+      content: ''; position: absolute; top: -10px; left: 0; width: 100%; height: 10px; background: transparent;
+    }
+    @media (prefers-color-scheme: dark) {
+      .nav-dropdown {
+        background: #181524;
+        border: 1px solid rgba(247, 245, 240, 0.14);
+        box-shadow: 0 14px 40px rgba(0,0,0,0.5);
+      }
+    }
+    .nav-dropdown-wrap:hover .nav-dropdown,
+    .nav-dropdown-wrap.active .nav-dropdown {
+      opacity: 1; pointer-events: auto; transform: translateY(0);
+    }
+    .nav-dropdown-wrap:hover .chevron,
+    .nav-dropdown-wrap.active .chevron {
+      transform: rotate(180deg);
+    }
     .dropdown-item {
-      display: flex; align-items: center; gap: 10px; padding: 10px 12px;
-      border-radius: 8px; text-decoration: none; color: var(--text); transition: background 0.15s;
+      display: flex; align-items: center; gap: 12px; padding: 10px 12px;
+      border-radius: 8px; text-decoration: none; color: var(--text);
+      transition: all 0.15s ease;
     }
-    .dropdown-item:hover { background: var(--paper2); }
-    .di-icon { font-size: 1.1rem; }
+    .dropdown-item:hover {
+      background: var(--paper2);
+      transform: translateX(3px);
+    }
+    .di-icon { font-size: 1.25rem; flex-shrink: 0; }
     .di-info { display: flex; flex-direction: column; }
-    .di-name { font-size: 13px; font-weight: 600; }
-    .di-desc { font-size: 11px; color: var(--text3); }
+    .di-name { font-size: 13.5px; font-weight: 600; color: var(--text); }
+    .di-desc { font-size: 11.5px; color: var(--text2); }
 
     .nav-hire {
       font-size: 13px; font-weight: 600; color: var(--paper); background: var(--text);
@@ -283,6 +305,24 @@ async def query_enterprise_knowledge(query: str, domain: str) -> dict:
       <p>© 2026 Gene Da Rocha. All rights reserved. | <a href="../index.html">Home</a> <a href="index.html">Skills Hub</a> <a href="ai-architecture.html">AI Architecture</a> <a href="ai-development.html">AI Development</a> <a href="ai-testing.html">AI Testing</a></p>
     </footer>
   </div>
+
+  <script>
+    const dropdownWrap = document.querySelector('.nav-dropdown-wrap');
+    if (dropdownWrap) {
+      const trigger = dropdownWrap.querySelector('.dropdown-trigger');
+      if (trigger) {
+        trigger.addEventListener('click', (e) => {
+          e.stopPropagation();
+          dropdownWrap.classList.toggle('active');
+        });
+      }
+      document.addEventListener('click', (e) => {
+        if (!dropdownWrap.contains(e.target)) {
+          dropdownWrap.classList.remove('active');
+        }
+      });
+    }
+  </script>
 </body>
 
 </html>
